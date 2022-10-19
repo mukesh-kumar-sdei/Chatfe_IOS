@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="280" id="KGk-i7-Jjw" customClass="AddDateTableViewCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="353" height="280"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="353" height="280"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNk-3i-QpS">
+                        <rect key="frame" x="20" y="30" width="313" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="h78-W8-bbB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fa8-Y3-htN">
+                        <rect key="frame" x="20" y="75" width="120" height="40"/>
+                        <color key="backgroundColor" red="0.26913768049999998" green="0.60133206839999997" blue="0.81126511099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="oxE-no-QGb"/>
+                            <constraint firstAttribute="height" constant="40" id="vod-WU-6dl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="+ Add Date"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="addDateBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qag-4L-AG8"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-Th-02a" userLabel="checkBox">
+                        <rect key="frame" x="14" y="129" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="HVl-wv-pyC"/>
+                            <constraint firstAttribute="width" constant="30" id="OOn-iy-K5f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="+ Add Date"/>
+                        <buttonConfiguration key="configuration" style="plain" image="checkbox-empty"/>
+                        <connections>
+                            <action selector="checkboxBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eGL-Pi-2jb"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free on my calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7b-5z-Zhe">
+                        <rect key="frame" x="49" y="134.5" width="148" height="19.5"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                        <color key="textColor" red="0.35686274509803922" green="0.38823529411764707" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sF1-fq-GKc">
+                        <rect key="frame" x="20" y="173" width="313" height="107"/>
+                    </datePicker>
+                </subviews>
+                <color key="backgroundColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstItem="ceA-Th-02a" firstAttribute="top" secondItem="fa8-Y3-htN" secondAttribute="bottom" constant="14" id="Fat-9R-wYK"/>
+                    <constraint firstAttribute="trailing" secondItem="sF1-fq-GKc" secondAttribute="trailing" constant="20" id="Kvn-2b-0Nl"/>
+                    <constraint firstAttribute="trailing" secondItem="xNk-3i-QpS" secondAttribute="trailing" constant="20" id="Lm2-52-Z1n"/>
+                    <constraint firstItem="fa8-Y3-htN" firstAttribute="top" secondItem="xNk-3i-QpS" secondAttribute="bottom" constant="20" id="Ua5-FV-KXf"/>
+                    <constraint firstItem="sF1-fq-GKc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="XDJ-lo-w5v"/>
+                    <constraint firstItem="i7b-5z-Zhe" firstAttribute="centerY" secondItem="ceA-Th-02a" secondAttribute="centerY" id="XPp-eh-tzX"/>
+                    <constraint firstItem="sF1-fq-GKc" firstAttribute="top" secondItem="ceA-Th-02a" secondAttribute="bottom" constant="14" id="Ycm-Re-wXu"/>
+                    <constraint firstItem="fa8-Y3-htN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bEE-Mf-RXV"/>
+                    <constraint firstItem="xNk-3i-QpS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="fIh-S3-yNi"/>
+                    <constraint firstItem="xNk-3i-QpS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="iMO-Y2-WuH"/>
+                    <constraint firstAttribute="bottom" secondItem="sF1-fq-GKc" secondAttribute="bottom" id="j7o-Xi-Wdt"/>
+                    <constraint firstItem="ceA-Th-02a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="p25-Iw-59E"/>
+                    <constraint firstItem="i7b-5z-Zhe" firstAttribute="leading" secondItem="ceA-Th-02a" secondAttribute="trailing" constant="5" id="y28-bJ-DRh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addDateBtn" destination="fa8-Y3-htN" id="vgh-g1-Lqc"/>
+                <outlet property="btnCheckbox" destination="ceA-Th-02a" id="3Ah-ZH-aBx"/>
+                <outlet property="lblFreeCalendar" destination="i7b-5z-Zhe" id="lwR-vm-zik"/>
+                <outlet property="uiDatePicker" destination="sF1-fq-GKc" id="ulr-Ns-ZRp"/>
+            </connections>
+            <point key="canvasLocation" x="107.97101449275362" y="198.88392857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkbox-empty" width="20" height="20"/>
+        <namedColor name="AccentColor">
+            <color red="0.043000001460313797" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

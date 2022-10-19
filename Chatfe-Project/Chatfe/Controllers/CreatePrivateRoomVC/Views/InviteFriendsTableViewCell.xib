@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="175" id="KGk-i7-Jjw" customClass="InviteFriendsTableViewCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="245"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="345" height="245"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVJ-wP-g0n">
+                        <rect key="frame" x="20" y="20" width="305" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="gSH-26-Liu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XG-R3-1Qi">
+                        <rect key="frame" x="20" y="65" width="100" height="40"/>
+                        <color key="backgroundColor" name="TintColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="hW1-uZ-Fd7"/>
+                            <constraint firstAttribute="height" constant="40" id="qLZ-s7-nWF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="+ Invite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-xU-xSu" userLabel="FriendsTagsView" customClass="TagListView" customModule="TagListView">
+                        <rect key="frame" x="20" y="115" width="305" height="50"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="ROO-nQ-JrJ"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                <real key="value" value="13"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="enableRemoveButton" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="removeIconLineWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="removeButtonIconSize">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Invitee Emails (abc@xyz.com, 123@xyz.com)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7mc-TT-hRV" customClass="CustomTextField" customModule="Chatfe" customModuleProvider="target">
+                        <rect key="frame" x="20" y="175" width="305" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="JaI-xw-A0x"/>
+                        </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                </subviews>
+                <color key="backgroundColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstItem="Nf1-xU-xSu" firstAttribute="top" secondItem="3XG-R3-1Qi" secondAttribute="bottom" constant="10" id="5ba-bc-d7t"/>
+                    <constraint firstAttribute="trailing" secondItem="7mc-TT-hRV" secondAttribute="trailing" constant="20" id="7LE-eQ-mXq"/>
+                    <constraint firstItem="7mc-TT-hRV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9MZ-io-jkY"/>
+                    <constraint firstAttribute="trailing" secondItem="Nf1-xU-xSu" secondAttribute="trailing" constant="20" id="LLw-T1-2E0"/>
+                    <constraint firstItem="vVJ-wP-g0n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="TlP-RO-6hw"/>
+                    <constraint firstItem="Nf1-xU-xSu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="VTw-Ui-A8y"/>
+                    <constraint firstAttribute="bottom" secondItem="7mc-TT-hRV" secondAttribute="bottom" constant="20" id="XDg-OX-KrM"/>
+                    <constraint firstAttribute="trailing" secondItem="vVJ-wP-g0n" secondAttribute="trailing" constant="20" id="Yiw-s5-l1O"/>
+                    <constraint firstItem="vVJ-wP-g0n" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dq4-0W-3VX"/>
+                    <constraint firstItem="3XG-R3-1Qi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="iO2-JI-bA5"/>
+                    <constraint firstItem="7mc-TT-hRV" firstAttribute="top" secondItem="Nf1-xU-xSu" secondAttribute="bottom" constant="10" id="mqw-TN-CFP"/>
+                    <constraint firstItem="3XG-R3-1Qi" firstAttribute="top" secondItem="vVJ-wP-g0n" secondAttribute="bottom" constant="20" id="q9u-2f-jdy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnInvite" destination="3XG-R3-1Qi" id="DBC-5q-7zX"/>
+                <outlet property="friendsTagView" destination="Nf1-xU-xSu" id="JgP-uh-cZL"/>
+                <outlet property="txtEmail" destination="7mc-TT-hRV" id="t2g-3F-m9D"/>
+            </connections>
+            <point key="canvasLocation" x="113.768115942029" y="136.94196428571428"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="Nf1-xU-xSu">
+            <size key="intrinsicContentSize" width="305" height="86"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.043000001460313797" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TintColor">
+            <color red="0.27099999785423279" green="0.60000002384185791" blue="0.81199997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

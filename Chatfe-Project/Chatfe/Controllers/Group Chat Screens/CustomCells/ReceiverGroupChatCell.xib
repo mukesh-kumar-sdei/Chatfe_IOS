@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="Proxima Nova Medium.otf">
+            <string>ProximaNova-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ReceiverGroupChatCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzG-KY-AqW" customClass="EmojiReaction" customModule="Chatfe" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BAV-eT-q1Y">
+                                <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="CVv-CI-7P9"/>
+                                    <constraint firstAttribute="width" constant="20" id="WuT-wv-zqK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iol-c1-ffl">
+                                <rect key="frame" x="55" y="20" width="245" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="rHm-Zi-w31"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6L-vg-QCj" userLabel="Emoji View">
+                                <rect key="frame" x="55" y="50" width="200" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjY-qc-6Kr">
+                                        <rect key="frame" x="0.0" y="7" width="21" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Medium" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Oqx-SS-MeN"/>
+                                    <constraint firstAttribute="width" constant="200" id="j4G-2w-JSV"/>
+                                    <constraint firstItem="VjY-qc-6Kr" firstAttribute="centerY" secondItem="m6L-vg-QCj" secondAttribute="centerY" id="krH-B0-K3p"/>
+                                    <constraint firstItem="VjY-qc-6Kr" firstAttribute="leading" secondItem="m6L-vg-QCj" secondAttribute="leading" id="ofg-vY-DKd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="BAV-eT-q1Y" firstAttribute="leading" secondItem="PzG-KY-AqW" secondAttribute="leading" constant="20" id="0aZ-3e-CKP"/>
+                            <constraint firstItem="BAV-eT-q1Y" firstAttribute="top" secondItem="PzG-KY-AqW" secondAttribute="top" constant="20" id="baZ-vZ-6cH"/>
+                            <constraint firstAttribute="bottom" secondItem="iol-c1-ffl" secondAttribute="bottom" constant="30" id="p74-Df-yXD"/>
+                            <constraint firstItem="m6L-vg-QCj" firstAttribute="leading" secondItem="iol-c1-ffl" secondAttribute="leading" id="pAV-9C-FNL"/>
+                            <constraint firstItem="iol-c1-ffl" firstAttribute="bottom" secondItem="m6L-vg-QCj" secondAttribute="top" id="twF-zQ-EiB"/>
+                            <constraint firstItem="iol-c1-ffl" firstAttribute="leading" secondItem="BAV-eT-q1Y" secondAttribute="trailing" constant="15" id="v7V-Em-jRe"/>
+                            <constraint firstAttribute="trailing" secondItem="iol-c1-ffl" secondAttribute="trailing" constant="20" id="xWP-S4-mfX"/>
+                            <constraint firstItem="iol-c1-ffl" firstAttribute="top" secondItem="PzG-KY-AqW" secondAttribute="top" constant="20" id="zNC-q4-4xi"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PzG-KY-AqW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QHy-pY-2nK"/>
+                    <constraint firstAttribute="trailing" secondItem="PzG-KY-AqW" secondAttribute="trailing" id="TL0-rp-uus"/>
+                    <constraint firstAttribute="bottom" secondItem="PzG-KY-AqW" secondAttribute="bottom" id="YMj-mH-WiN"/>
+                    <constraint firstItem="PzG-KY-AqW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="cMn-WX-cVy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="AccentColor"/>
+            <connections>
+                <outlet property="imgMatchPref" destination="BAV-eT-q1Y" id="dcw-IW-Jdm"/>
+                <outlet property="lblChatMessage" destination="iol-c1-ffl" id="Eji-av-cl9"/>
+                <outlet property="lblChatMessageBottom" destination="p74-Df-yXD" id="HDU-pe-tnA"/>
+                <outlet property="lblEmoji" destination="VjY-qc-6Kr" id="Pwj-aU-it8"/>
+                <outlet property="messageView" destination="PzG-KY-AqW" id="NPC-SK-228"/>
+                <outlet property="viewEmoji" destination="m6L-vg-QCj" id="eOQ-3C-65k"/>
+                <outlet property="viewEmojiHeight" destination="Oqx-SS-MeN" id="aPH-hC-aJN"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="130"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.043000001460313797" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

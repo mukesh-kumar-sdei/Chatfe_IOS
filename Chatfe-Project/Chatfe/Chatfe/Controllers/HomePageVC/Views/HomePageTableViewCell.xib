@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="Proxima Nova Medium.otf">
+            <string>ProximaNova-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="KGk-i7-Jjw" customClass="HomePageTableViewCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="418" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="418" height="220"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awa-Jb-oPG">
+                        <rect key="frame" x="0.0" y="0.0" width="418" height="220"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MyG-YV-t7I">
+                                <rect key="frame" x="0.0" y="0.0" width="418" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Dkk-UY-dxU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PLq-vO-65r">
+                                <rect key="frame" x="0.0" y="150" width="49.5" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajx-Kc-EvI">
+                                        <rect key="frame" x="0.0" y="0.0" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vf3-gR-Q5c">
+                                        <rect key="frame" x="0.0" y="25" width="49.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Medium" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDo-Lr-EZ2">
+                                <rect key="frame" x="378" y="155" width="40" height="40"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="addCircle"/>
+                                <connections>
+                                    <action selector="addBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tzc-K0-h9J"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="MyG-YV-t7I" firstAttribute="leading" secondItem="awa-Jb-oPG" secondAttribute="leading" id="6wP-zl-ZPY"/>
+                            <constraint firstItem="PLq-vO-65r" firstAttribute="leading" secondItem="awa-Jb-oPG" secondAttribute="leading" id="8Oe-Us-gVo"/>
+                            <constraint firstItem="SDo-Lr-EZ2" firstAttribute="centerY" secondItem="PLq-vO-65r" secondAttribute="centerY" id="Hlo-eN-vWR"/>
+                            <constraint firstAttribute="trailing" secondItem="MyG-YV-t7I" secondAttribute="trailing" id="Wiu-Vx-RVK"/>
+                            <constraint firstItem="PLq-vO-65r" firstAttribute="top" secondItem="MyG-YV-t7I" secondAttribute="bottom" constant="10" id="a6w-Nz-CRh"/>
+                            <constraint firstAttribute="bottom" secondItem="PLq-vO-65r" secondAttribute="bottom" constant="20" id="oW5-95-cfc"/>
+                            <constraint firstItem="MyG-YV-t7I" firstAttribute="top" secondItem="awa-Jb-oPG" secondAttribute="top" id="rp8-12-9YU"/>
+                            <constraint firstAttribute="trailing" secondItem="SDo-Lr-EZ2" secondAttribute="trailing" id="wGA-GT-GYh"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="awa-Jb-oPG" secondAttribute="trailing" id="9UF-4e-QwL"/>
+                    <constraint firstItem="awa-Jb-oPG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EBm-ey-vMi"/>
+                    <constraint firstAttribute="bottom" secondItem="awa-Jb-oPG" secondAttribute="bottom" id="RYP-Ng-0km"/>
+                    <constraint firstItem="awa-Jb-oPG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="u3v-0O-T5p"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="roomImageView" destination="MyG-YV-t7I" id="EQ4-Rn-Z5H"/>
+                <outlet property="roomNameLbl" destination="Ajx-Kc-EvI" id="HJ4-2V-yJ5"/>
+                <outlet property="roomTimingsLbl" destination="vf3-gR-Q5c" id="Nqk-Lo-BWc"/>
+            </connections>
+            <point key="canvasLocation" x="86.956521739130437" y="133.92857142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="addCircle" width="40" height="40"/>
+        <namedColor name="AccentColor">
+            <color red="0.043137254901960784" green="0.058823529411764705" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

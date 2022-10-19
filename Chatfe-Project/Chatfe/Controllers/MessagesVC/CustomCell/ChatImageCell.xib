@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Medium.otf">
+            <string>ProximaNova-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="240" id="E4A-4H-m6Y" customClass="ChatImageCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="E4A-4H-m6Y" id="xk3-4a-4k9">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="230"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LTN-xt-3jk">
+                        <rect key="frame" x="327" y="0.0" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="82E-tl-rNj"/>
+                            <constraint firstAttribute="width" constant="25" id="8ff-AY-rOX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l61-rs-9nN">
+                        <rect key="frame" x="112" y="0.0" width="200" height="200"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0l-GS-1ud">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="3CU-oc-SIv"/>
+                            <constraint firstAttribute="width" constant="200" id="JWR-TY-N5e"/>
+                            <constraint firstItem="p0l-GS-1ud" firstAttribute="top" secondItem="l61-rs-9nN" secondAttribute="top" id="emi-QN-KUq"/>
+                            <constraint firstAttribute="trailing" secondItem="p0l-GS-1ud" secondAttribute="trailing" id="kWR-wF-TmX"/>
+                            <constraint firstAttribute="bottom" secondItem="p0l-GS-1ud" secondAttribute="bottom" id="nLZ-1A-MHc"/>
+                            <constraint firstItem="p0l-GS-1ud" firstAttribute="leading" secondItem="l61-rs-9nN" secondAttribute="leading" id="xIa-UM-DJX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJP-8E-Fdm" userLabel="lblTime">
+                        <rect key="frame" x="278" y="210" width="34" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="gzd-wv-aRl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProximaNova-Medium" family="Proxima Nova" pointSize="14"/>
+                        <color key="textColor" red="0.35686274509999999" green="0.38823529410000002" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstItem="WJP-8E-Fdm" firstAttribute="trailing" secondItem="l61-rs-9nN" secondAttribute="trailing" id="1wh-Fl-a9q"/>
+                    <constraint firstItem="WJP-8E-Fdm" firstAttribute="top" secondItem="l61-rs-9nN" secondAttribute="bottom" constant="10" id="3K8-lA-OJ9"/>
+                    <constraint firstAttribute="bottom" secondItem="WJP-8E-Fdm" secondAttribute="bottom" constant="10" id="7wk-Fc-JnJ"/>
+                    <constraint firstItem="LTN-xt-3jk" firstAttribute="top" secondItem="xk3-4a-4k9" secondAttribute="top" id="EWy-UN-pec"/>
+                    <constraint firstItem="l61-rs-9nN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xk3-4a-4k9" secondAttribute="leading" constant="100" id="NUs-Z3-wTb"/>
+                    <constraint firstItem="LTN-xt-3jk" firstAttribute="leading" secondItem="l61-rs-9nN" secondAttribute="trailing" constant="15" id="Rc7-lk-Da9"/>
+                    <constraint firstItem="l61-rs-9nN" firstAttribute="top" secondItem="xk3-4a-4k9" secondAttribute="top" id="gDH-1O-PJu"/>
+                    <constraint firstAttribute="trailing" secondItem="LTN-xt-3jk" secondAttribute="trailing" constant="20" id="j3O-dc-G9W"/>
+                    <constraint firstItem="LTN-xt-3jk" firstAttribute="top" secondItem="xk3-4a-4k9" secondAttribute="top" id="sff-it-ufp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="SEE-32-t51"/>
+            <connections>
+                <outlet property="btnImage" destination="p0l-GS-1ud" id="J19-L2-7S5"/>
+                <outlet property="friendImage" destination="LTN-xt-3jk" id="O3J-On-Zuw"/>
+                <outlet property="lblChatTime" destination="WJP-8E-Fdm" id="13H-kG-w1q"/>
+            </connections>
+            <point key="canvasLocation" x="169.56521739130437" y="189.50892857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

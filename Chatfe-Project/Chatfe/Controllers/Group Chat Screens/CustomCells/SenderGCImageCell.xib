@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="Proxima Nova Medium.otf">
+            <string>ProximaNova-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="280" id="dSW-7L-Usf" customClass="SenderGCImageCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="280"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="dSW-7L-Usf" id="g55-fY-zIU">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="280"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2a2-gH-Pzn" userLabel="Icon &amp; Label View" customClass="EmojiReaction" customModule="Chatfe" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="405" height="0.0"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XuR-xq-R1e">
+                                <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="0fr-Vq-S9o"/>
+                                    <constraint firstAttribute="width" constant="20" id="tZR-yx-Frn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-cI-FIm">
+                                <rect key="frame" x="55" y="20" width="39.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="XuR-xq-R1e" firstAttribute="top" secondItem="2a2-gH-Pzn" secondAttribute="top" constant="20" id="Fa8-Xj-ft3"/>
+                            <constraint firstAttribute="height" id="ITj-il-p1D"/>
+                            <constraint firstItem="XuR-xq-R1e" firstAttribute="leading" secondItem="2a2-gH-Pzn" secondAttribute="leading" constant="20" id="LE3-ww-0br"/>
+                            <constraint firstItem="ZCw-cI-FIm" firstAttribute="leading" secondItem="XuR-xq-R1e" secondAttribute="trailing" constant="15" id="XGd-Bj-QXy"/>
+                            <constraint firstItem="ZCw-cI-FIm" firstAttribute="top" secondItem="XuR-xq-R1e" secondAttribute="top" id="hdl-Wl-dgh"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KF5-oA-i7p" userLabel="Send Image View" customClass="EmojiReaction" customModule="Chatfe" customModuleProvider="target">
+                        <rect key="frame" x="185" y="10" width="200" height="200"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf1-sa-DSW">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xf1-sa-DSW" firstAttribute="top" secondItem="KF5-oA-i7p" secondAttribute="top" id="1FF-nY-5YY"/>
+                            <constraint firstAttribute="height" constant="200" id="6Vr-vg-69z"/>
+                            <constraint firstItem="Xf1-sa-DSW" firstAttribute="leading" secondItem="KF5-oA-i7p" secondAttribute="leading" id="6iO-ca-2YO"/>
+                            <constraint firstAttribute="width" constant="200" id="dGv-hA-TyE"/>
+                            <constraint firstAttribute="trailing" secondItem="Xf1-sa-DSW" secondAttribute="trailing" id="fAw-kE-DcU"/>
+                            <constraint firstAttribute="bottom" secondItem="Xf1-sa-DSW" secondAttribute="bottom" id="swh-ah-paM"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgn-90-n3K" userLabel="Emoji View">
+                        <rect key="frame" x="355" y="210" width="30" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="😀" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYw-l9-C19">
+                                <rect key="frame" x="4.5" y="7" width="21" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Medium" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="8J8-ct-J8N"/>
+                            <constraint firstAttribute="width" constant="30" id="fYQ-F0-e8c"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="2a2-gH-Pzn" secondAttribute="trailing" id="5Gg-TA-IWS"/>
+                    <constraint firstItem="mgn-90-n3K" firstAttribute="trailing" secondItem="KF5-oA-i7p" secondAttribute="trailing" id="JwC-As-NOu"/>
+                    <constraint firstAttribute="bottom" secondItem="mgn-90-n3K" secondAttribute="bottom" id="OMC-aP-MaA"/>
+                    <constraint firstItem="2a2-gH-Pzn" firstAttribute="leading" secondItem="g55-fY-zIU" secondAttribute="leading" id="XXC-nW-tPh"/>
+                    <constraint firstItem="KF5-oA-i7p" firstAttribute="top" secondItem="2a2-gH-Pzn" secondAttribute="bottom" constant="10" id="Y7f-KZ-WGY"/>
+                    <constraint firstAttribute="trailing" secondItem="KF5-oA-i7p" secondAttribute="trailing" constant="20" id="gwr-JK-Lcd"/>
+                    <constraint firstItem="mgn-90-n3K" firstAttribute="top" secondItem="KF5-oA-i7p" secondAttribute="bottom" id="qvi-hg-VTj"/>
+                    <constraint firstItem="2a2-gH-Pzn" firstAttribute="top" secondItem="g55-fY-zIU" secondAttribute="top" id="yhf-pb-k7m"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="PFT-nC-kQS"/>
+            <connections>
+                <outlet property="imgMatchPref" destination="XuR-xq-R1e" id="sIO-Ho-uiX"/>
+                <outlet property="lblChatMessage" destination="ZCw-cI-FIm" id="dPB-ZO-IWv"/>
+                <outlet property="lblEmoji" destination="pYw-l9-C19" id="PrV-wR-tHl"/>
+                <outlet property="pictureView" destination="KF5-oA-i7p" id="q7Z-PB-61d"/>
+                <outlet property="sentImageButton" destination="Xf1-sa-DSW" id="BRk-Oa-QEE"/>
+                <outlet property="viewEmoji" destination="mgn-90-n3K" id="g2s-TQ-8gd"/>
+                <outlet property="viewEmojiHeight" destination="8J8-ct-J8N" id="f5F-Xz-rze"/>
+            </connections>
+            <point key="canvasLocation" x="193.47826086956522" y="119.86607142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.043000001460313797" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

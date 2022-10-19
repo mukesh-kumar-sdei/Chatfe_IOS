@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="Proxima Nova Medium.otf">
+            <string>ProximaNova-Medium</string>
+        </array>
+        <array key="Proxima Nova Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="KGk-i7-Jjw" customClass="ProfileNameTableViewCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="368" height="169"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="169"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fp3-VS-fj8">
+                        <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
+                        <subviews>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cxk-X7-ANP">
+                                <rect key="frame" x="20" y="23" width="328" height="34"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5l-YP-53e">
+                                <rect key="frame" x="149.5" y="23" width="69" height="34.5"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="A5l-YP-53e" firstAttribute="centerY" secondItem="Fp3-VS-fj8" secondAttribute="centerY" id="2Se-Oz-aDF"/>
+                            <constraint firstAttribute="trailing" secondItem="cxk-X7-ANP" secondAttribute="trailing" constant="20" id="Zce-AH-OOH"/>
+                            <constraint firstItem="cxk-X7-ANP" firstAttribute="leading" secondItem="Fp3-VS-fj8" secondAttribute="leading" constant="20" id="aSl-KL-P9N"/>
+                            <constraint firstItem="A5l-YP-53e" firstAttribute="centerX" secondItem="Fp3-VS-fj8" secondAttribute="centerX" id="b22-gZ-Hju"/>
+                            <constraint firstItem="cxk-X7-ANP" firstAttribute="centerY" secondItem="Fp3-VS-fj8" secondAttribute="centerY" id="cEC-Mj-uj4"/>
+                            <constraint firstAttribute="height" constant="80" id="mga-wJ-L5t"/>
+                            <constraint firstItem="cxk-X7-ANP" firstAttribute="centerX" secondItem="Fp3-VS-fj8" secondAttribute="centerX" id="wJc-Wp-zey"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="40"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-8B-eOD">
+                        <rect key="frame" x="20" y="149" width="328" height="0.0"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Medium" family="Proxima Nova" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="AccentColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="9Xz-8B-eOD" secondAttribute="trailing" constant="20" id="94i-Oc-62b"/>
+                    <constraint firstItem="Fp3-VS-fj8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AX1-Ua-ctw"/>
+                    <constraint firstAttribute="trailing" secondItem="Fp3-VS-fj8" secondAttribute="trailing" id="BuG-4A-G43"/>
+                    <constraint firstItem="9Xz-8B-eOD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="R9V-jN-uFG"/>
+                    <constraint firstItem="Fp3-VS-fj8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZNP-D3-Oqb"/>
+                    <constraint firstAttribute="bottom" secondItem="9Xz-8B-eOD" secondAttribute="bottom" constant="20" id="egu-96-XvJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLbl" destination="9Xz-8B-eOD" id="aOT-Ql-ApQ"/>
+                <outlet property="nameLbl" destination="A5l-YP-53e" id="s51-IR-PLc"/>
+                <outlet property="nameLblView" destination="Fp3-VS-fj8" id="FTz-Ij-X0Z"/>
+                <outlet property="nameTextField" destination="cxk-X7-ANP" id="Rjm-G2-CqZ"/>
+            </connections>
+            <point key="canvasLocation" x="97.101449275362327" y="113.50446428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.043000001460313797" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

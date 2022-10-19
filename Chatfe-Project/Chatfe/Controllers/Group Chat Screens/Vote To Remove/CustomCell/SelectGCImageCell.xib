@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="262" id="KGk-i7-Jjw" customClass="SelectGCImageCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="262"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="262"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-5g-AWA" userLabel="Icon &amp; Label View" customClass="EmojiReaction" customModule="Chatfe" customModuleProvider="target">
+                        <rect key="frame" x="1.5" y="1.5" width="317" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zjO-oJ-dve">
+                                <rect key="frame" x="20" y="20" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="5JJ-An-5zl"/>
+                                    <constraint firstAttribute="height" constant="20" id="9Ff-FG-SnD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ly-SJ-LaL">
+                                <rect key="frame" x="55" y="20" width="39.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="3ly-SJ-LaL" firstAttribute="leading" secondItem="zjO-oJ-dve" secondAttribute="trailing" constant="15" id="9vG-qd-poN"/>
+                            <constraint firstItem="3ly-SJ-LaL" firstAttribute="top" secondItem="zjO-oJ-dve" secondAttribute="top" id="Djk-nG-e0X"/>
+                            <constraint firstItem="zjO-oJ-dve" firstAttribute="leading" secondItem="Dgb-5g-AWA" secondAttribute="leading" constant="20" id="ICw-nk-Sag"/>
+                            <constraint firstAttribute="height" constant="40" id="qyi-Os-kXE"/>
+                            <constraint firstItem="zjO-oJ-dve" firstAttribute="top" secondItem="Dgb-5g-AWA" secondAttribute="top" constant="20" id="wFi-ef-Jks"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIr-OP-M7w" userLabel="Send Image View" customClass="EmojiReaction" customModule="Chatfe" customModuleProvider="target">
+                        <rect key="frame" x="55" y="51.5" width="200" height="200"/>
+                        <subviews>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14f-D9-u1h">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="2Ea-rS-IDe"/>
+                            <constraint firstAttribute="bottom" secondItem="14f-D9-u1h" secondAttribute="bottom" id="Cd9-fn-RBX"/>
+                            <constraint firstAttribute="height" constant="200" id="cfG-31-ZDY"/>
+                            <constraint firstItem="14f-D9-u1h" firstAttribute="top" secondItem="pIr-OP-M7w" secondAttribute="top" id="qhm-XO-Mhy"/>
+                            <constraint firstItem="14f-D9-u1h" firstAttribute="leading" secondItem="pIr-OP-M7w" secondAttribute="leading" id="tB5-ya-d1o"/>
+                            <constraint firstAttribute="trailing" secondItem="14f-D9-u1h" secondAttribute="trailing" id="vdr-Dv-Jlb"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Dgb-5g-AWA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1.5" id="N5V-ws-mQq"/>
+                    <constraint firstItem="pIr-OP-M7w" firstAttribute="top" secondItem="Dgb-5g-AWA" secondAttribute="bottom" constant="10" id="OLl-uc-hlz"/>
+                    <constraint firstItem="Dgb-5g-AWA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1.5" id="a9d-5n-Vnv"/>
+                    <constraint firstAttribute="bottom" secondItem="pIr-OP-M7w" secondAttribute="bottom" constant="1.5" id="fTd-JX-2yl"/>
+                    <constraint firstItem="pIr-OP-M7w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="55" id="fe0-NJ-6JK"/>
+                    <constraint firstAttribute="trailing" secondItem="Dgb-5g-AWA" secondAttribute="trailing" constant="1.5" id="i5h-xP-iza"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="AccentColor"/>
+            <connections>
+                <outlet property="imgMatchPref" destination="zjO-oJ-dve" id="2oh-Qw-eTX"/>
+                <outlet property="imgSentPhoto" destination="14f-D9-u1h" id="QWq-Rk-HhL"/>
+                <outlet property="lblChatMessage" destination="3ly-SJ-LaL" id="dLf-b1-0iV"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="173.4375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

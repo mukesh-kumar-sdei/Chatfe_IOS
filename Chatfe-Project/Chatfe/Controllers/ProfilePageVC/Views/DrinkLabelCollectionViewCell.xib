@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DrinkLabelCollectionViewCell" customModule="Chatfe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="250" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psa-ox-oQA">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xFV-WX-2lo">
+                                <rect key="frame" x="20" y="10" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="s12-zH-Atc"/>
+                                    <constraint firstAttribute="height" constant="20" id="xaB-ha-jNg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMe-WK-2Nq">
+                                <rect key="frame" x="50" y="10" width="180" height="20"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="EMe-WK-2Nq" firstAttribute="leading" secondItem="psa-ox-oQA" secondAttribute="leading" constant="50" id="2sE-ee-jk3"/>
+                            <constraint firstAttribute="trailing" secondItem="EMe-WK-2Nq" secondAttribute="trailing" constant="20" id="LYV-lH-9xb"/>
+                            <constraint firstAttribute="bottom" secondItem="EMe-WK-2Nq" secondAttribute="bottom" constant="10" id="e4k-iw-q1h"/>
+                            <constraint firstItem="EMe-WK-2Nq" firstAttribute="top" secondItem="psa-ox-oQA" secondAttribute="top" constant="10" id="gk5-3b-hdy"/>
+                            <constraint firstItem="EMe-WK-2Nq" firstAttribute="centerY" secondItem="xFV-WX-2lo" secondAttribute="centerY" id="jvY-97-zwU"/>
+                            <constraint firstItem="xFV-WX-2lo" firstAttribute="centerY" secondItem="psa-ox-oQA" secondAttribute="centerY" id="k70-rt-Vbs"/>
+                            <constraint firstItem="xFV-WX-2lo" firstAttribute="leading" secondItem="psa-ox-oQA" secondAttribute="leading" constant="20" id="kZW-QL-5Av"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="psa-ox-oQA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FTX-oH-l0Z"/>
+                <constraint firstAttribute="trailing" secondItem="psa-ox-oQA" secondAttribute="trailing" id="L2e-US-2ep"/>
+                <constraint firstItem="psa-ox-oQA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XGk-k0-C2E"/>
+                <constraint firstAttribute="bottom" secondItem="psa-ox-oQA" secondAttribute="bottom" id="i3b-0z-gVz"/>
+            </constraints>
+            <size key="customSize" width="250" height="186"/>
+            <connections>
+                <outlet property="containerView" destination="psa-ox-oQA" id="sO0-D5-pie"/>
+                <outlet property="drinkImageView" destination="xFV-WX-2lo" id="z5i-ML-XhN"/>
+                <outlet property="drinkLabel" destination="EMe-WK-2Nq" id="icJ-Re-MF0"/>
+            </connections>
+            <point key="canvasLocation" x="-559.4202898550725" y="135.9375"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.043000001460313797" green="0.059000000357627869" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
