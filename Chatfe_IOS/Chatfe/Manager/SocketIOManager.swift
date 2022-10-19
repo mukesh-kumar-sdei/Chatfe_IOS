@@ -126,6 +126,7 @@ class SocketIOManager: NSObject {
         if !isSocketConnected() {
             socket.connect()
             socket.on(clientEvent: .reconnect) { data, ack in
+                NotificationCenter.default.post(name: Notification.Name.SOCKET_RECONNECTED, object: nil)
                 printMessage("\n--> SOCKET RE-CONNECTED SUCCESSFULLY")
             }
         }

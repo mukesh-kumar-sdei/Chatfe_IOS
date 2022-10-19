@@ -216,6 +216,7 @@ extension Notification.Name {
     static let FRIEND_NOTIFICATION_TAPPED   =   Notification.Name("FRIEND_NOTIFICATION_TAPPED")
     static let GC_UNREAD_MESSAGE_COUNT      =   Notification.Name("GC_UNREAD_MESSAGE_COUNT")
     static let LISTEN_ONLINE_USERS          =   Notification.Name("LISTEN_ONLINE_USERS")
+    static let SOCKET_RECONNECTED           =   Notification.Name("SOCKET_RECONNECTED")
 }
 
 struct ApiEndpoints {

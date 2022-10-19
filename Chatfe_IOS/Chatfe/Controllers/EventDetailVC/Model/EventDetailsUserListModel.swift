@@ -66,6 +66,7 @@ struct UserListData : Codable {
     let drink: DrinkData?
     let hometown : HometownData?
     let dob : DobData?
+    let loginType : String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -82,6 +83,7 @@ struct UserListData : Codable {
         case drink = "drink"
         case hometown = "hometown"
         case dob = "dob"
+        case loginType = "loginType"
     }
 
     init(from decoder: Decoder) throws {
@@ -99,6 +101,7 @@ struct UserListData : Codable {
         drink = try values.decodeIfPresent(DrinkData.self, forKey: .drink)
         hometown = try values.decodeIfPresent(HometownData.self, forKey: .hometown)
         dob = try values.decodeIfPresent(DobData.self, forKey: .dob)
+        loginType = try values.decodeIfPresent(String.self, forKey: .loginType)
     }
 
 }

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var badgeCount: Int = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // KEYBOARD HANDLER LIBRARY
         IQKeyboardManager.shared().isEnabled = true
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         registerForNotification()
-        UIApplication.shared.applicationIconBadgeNumber = 0
+//        UIApplication.shared.applicationIconBadgeNumber = 0
        
         /// INITIALIZING GOOGLE ADs
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -83,8 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
-
 }
 
 
@@ -126,20 +124,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // THIS FUNCTION GETS CALLED - WHEN APP IS IN BACKGROUND
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("\n--> NOTIFICATION USERINFO :> \(userInfo)")
+        
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
         // With swizzling disabled you must let Messaging know about the message, for Analytics - by uncommenting below line
         Messaging.messaging().appDidReceiveMessage(userInfo)
-
+        
         self.badgeCount += 1
         NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: self.badgeCount)
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        completionHandler(UIBackgroundFetchResult.newData)
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        print("\n--> NOTIFICATION USERINFO :> \(userInfo)")
+
+        completionHandler(.newData)
     }
     
     // THIS FUNCTION GETS CALLED - WHEN APP IS IN FOREGROUND

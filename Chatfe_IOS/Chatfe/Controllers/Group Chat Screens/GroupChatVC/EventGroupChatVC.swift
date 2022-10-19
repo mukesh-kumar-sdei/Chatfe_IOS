@@ -73,15 +73,20 @@ class EventGroupChatVC: BaseViewController {
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(getGrpChatChannelID(_:)), name: Notification.Name("GROUP_CHAT_CHANNEL_ID"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getGrpChatMembers(_:)), name: Notification.Name("GROUP_CHAT_MEMBERS"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         IQKeyboardManager.shared().isEnableAutoToolbar = false
         IQKeyboardManager.shared().isEnabled = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(rejoinGroupChat), name: Notification.Name.SOCKET_RECONNECTED, object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
+    }
+    
+    @objc func rejoinGroupChat() {
+        self.viewModel.getChannelID()
     }
     
     // -----------------------------------

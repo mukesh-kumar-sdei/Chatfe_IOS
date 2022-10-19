@@ -386,13 +386,15 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
             if isFromSettings {
                 let friend = friendsArr[indexPath.row]
                 cell.lblFriendName.text = "\(friend.fname ?? "") \(friend.lname ?? "")"
-                cell.lblPhoneNumber.text = friend.phone
+//                cell.lblPhoneNumber.text = friend.phone
+                cell.lblPhoneNumber.text = friend.loginType == "Chatfe" ? friend.username : "User"
                 if let imageUrl = URL(string: friend.profileImg?.image ?? "") {
                     cell.friendImage.kf.setImage(with: imageUrl)
                 }
             } else {
                 let friend = joinedUsersArr[indexPath.row]
                 cell.lblFriendName.text = "\(friend.fname ?? "") \(friend.lname ?? "")"
+//                cell.lblPhoneNumber.text = friend.phone
                 cell.lblPhoneNumber.text = friend.loginType == "Chatfe" ? friend.username : "User"
                 
                 if let imageUrl = URL(string: friend.profileImg?.image ?? "") {

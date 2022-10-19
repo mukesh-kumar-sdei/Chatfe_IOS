@@ -113,8 +113,6 @@ class NotificationsActivityVM: BaseViewModel {
                 self.isLoading = false
                 switch result {
                 case .success(let data):
-//                    UIApplication.shared.applicationIconBadgeNumber = 0
-//                    NotificationCenter.default.post(name: Notification.Name("HOME_NOTIFICATION_TAPPED"), object: 0)
                     if let model = data as? SendOTPResponse {
                         if model.status == "SUCCESS" {
                             self.acceptModel = model
@@ -138,8 +136,6 @@ class NotificationsActivityVM: BaseViewModel {
                 self.isLoading = false
                 switch result {
                 case .success(let data):
-//                    UIApplication.shared.applicationIconBadgeNumber = 0
-//                    NotificationCenter.default.post(name: Notification.Name("HOME_NOTIFICATION_TAPPED"), object: 0)
                     if let model = data as? SendOTPResponse {
                         if model.status == "SUCCESS" {
                             self.rejectModel = model

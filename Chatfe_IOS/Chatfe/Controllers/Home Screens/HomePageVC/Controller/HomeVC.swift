@@ -184,6 +184,13 @@ class HomeVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        if UIApplication.shared.applicationIconBadgeNumber > 0 {
+//            self.lblBadge.backgroundColor = .red
+//            self.lblBadge.text = "\(UIApplication.shared.applicationIconBadgeNumber)"
+//        }else{
+//            self.lblBadge.backgroundColor = .clear
+//            self.lblBadge.text = ""
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
