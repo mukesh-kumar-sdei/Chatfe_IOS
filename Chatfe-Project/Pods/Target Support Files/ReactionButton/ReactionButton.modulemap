@@ -1,6 +1,0 @@
-framework module ReactionButton {
-  umbrella header "ReactionButton-umbrella.h"
-
-  export *
-  module * { export * }
-}
