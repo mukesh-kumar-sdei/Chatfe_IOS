@@ -105,22 +105,34 @@ class HomeVC: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(roomNotificationTapped(_:)), name: Notification.Name.ROOM_NOTIFICATION_TAPPED, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(friendNotificationTapped(_:)), name: Notification.Name.FRIEND_NOTIFICATION_TAPPED, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleDeepLink(_:)), name: Notification.Name.DeepLinkNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationCount(_:)), name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hitGetNotificationsAPI), name: Notification.Name.FOREGROUND_NOTIFICATION, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationCount(_:)), name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: nil)
     }
     
+    @objc func hitGetNotificationsAPI() {
+        self.homePageViewModel.getAllNotifications()
+    }
+    
+    /*
     @objc func updateNotificationCount(_ notification: Notification) {
-           if let count = notification.object as? Int {
-               DispatchQueue.main.async {
-                   if count == 0 {
-                       self.lblBadge.backgroundColor = .clear
-                       self.lblBadge.text = ""
-                   }else{
-                       self.lblBadge.backgroundColor = .red
-                       self.lblBadge.text = "\(count)"
-                   }
-               }
-           }
-       }
+        if let count = notification.object as? Int {
+            DispatchQueue.main.async {
+                if count == 0 {
+                    self.lblBadge.backgroundColor = .clear
+                    self.lblBadge.text = ""
+                }else{
+                    self.lblBadge.backgroundColor = .red
+                    self.lblBadge.text = "\(count)"
+                }
+            }
+        }
+    }
+    */
+    func updateBadgeCount(count: Int) {
+        self.lblBadge.isHidden = count > 0 ? false : true
+        self.lblBadge.backgroundColor = count > 0 ? .red : .clear
+        self.lblBadge.text = count > 0 ? "\(count)" : ""
+    }
     
     @objc func roomNotificationTapped(_ notification: Notification) {
         if let id = notification.object as? String {
@@ -184,13 +196,6 @@ class HomeVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if UIApplication.shared.applicationIconBadgeNumber > 0 {
-//            self.lblBadge.backgroundColor = .red
-//            self.lblBadge.text = "\(UIApplication.shared.applicationIconBadgeNumber)"
-//        }else{
-//            self.lblBadge.backgroundColor = .clear
-//            self.lblBadge.text = ""
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -314,6 +319,24 @@ class HomeVC: BaseViewController {
                 self.hitGetAllRoomAPI()
             }
         }
+        
+        /// ALL NOTIFICATIONS RESPONSE
+        homePageViewModel.reloadListViewClosure1 = { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                let data = self.homePageViewModel.notificationResp
+//                var count = 0
+                let friendCount = data?.friendResult ?? []
+                let inviteCount = data?.privateRoomResult ?? []
+                if friendCount.count > 0 || inviteCount.count > 0 {
+                    let totalCount = friendCount.count + inviteCount.count
+                    self.updateBadgeCount(count: totalCount)
+                    NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: totalCount)
+                }
+            }
+        }
+        
+        
         
         /// GET ALL JOINED ROOM RESPONSEs
         /*homePageViewModel.reloadMenuClosure1 = { [weak self] in

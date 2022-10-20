@@ -40,9 +40,9 @@ class NotificationsActivityVC: BaseViewController {
 //        setupClosure()
     }
     override func viewWillAppear(_ animated: Bool) {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.badgeCount = 0
-        NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: delegate.badgeCount)
+//        let delegate = UIApplication.shared.delegate as! AppDelegate
+//        delegate.badgeCount = 0
+//        NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: delegate.badgeCount)
         hitGetAllNotificationsAPI()
         setupClosure()
     }
@@ -95,9 +95,6 @@ class NotificationsActivityVC: BaseViewController {
 
     // MARK: - ==== IBACTIONs ====
     @IBAction func closeBtnClicked(_ sender: UIButton) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        (UIApplication.shared.delegate as! AppDelegate).badgeCount = 0
-//        NotificationCenter.default.post(name: Notification.Name("HOME_NOTIFICATION_TAPPED"), object: 0)
         self.navigationController?.popViewController(animated: true)
     }
 

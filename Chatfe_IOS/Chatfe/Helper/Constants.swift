@@ -217,6 +217,7 @@ extension Notification.Name {
     static let GC_UNREAD_MESSAGE_COUNT      =   Notification.Name("GC_UNREAD_MESSAGE_COUNT")
     static let LISTEN_ONLINE_USERS          =   Notification.Name("LISTEN_ONLINE_USERS")
     static let SOCKET_RECONNECTED           =   Notification.Name("SOCKET_RECONNECTED")
+    static let FOREGROUND_NOTIFICATION      =   Notification.Name("FOREGROUND_NOTIFICATION")
 }
 
 struct ApiEndpoints {

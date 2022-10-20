@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         registerForNotification()
-//        UIApplication.shared.applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = 0
        
         /// INITIALIZING GOOGLE ADs
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -131,8 +131,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // With swizzling disabled you must let Messaging know about the message, for Analytics - by uncommenting below line
         Messaging.messaging().appDidReceiveMessage(userInfo)
         
-        self.badgeCount += 1
-        NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: self.badgeCount)
+//        self.badgeCount += 1
+//        NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: self.badgeCount)
 
         completionHandler(.newData)
     }
@@ -140,13 +140,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // THIS FUNCTION GETS CALLED - WHEN APP IS IN FOREGROUND
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        self.badgeCount += 1
-        NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: self.badgeCount)
+//        self.badgeCount += 1
+//        NotificationCenter.default.post(name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: self.badgeCount)
 
         let userInfo = notification.request.content.userInfo
         Messaging.messaging().appDidReceiveMessage(userInfo)
         print("\n--> FOREGROUND NOTIFICATION USERINFO :> \(userInfo)")
-//        NotificationCenter.default.post(name: Notification.Name("HOME_NOTIFICATION_TAPPED"), object: userInfo["badge"])
+
+        if let type = userInfo[APIKeys.type] as? String, type == Constants.room || type == Constants.friendRequest {
+            self.badgeCount += 1
+            NotificationCenter.default.post(name: Notification.Name.FOREGROUND_NOTIFICATION, object: self.badgeCount)
+        }
+        
         completionHandler([.sound, .badge, .banner])
     }
     

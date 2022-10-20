@@ -60,16 +60,7 @@ class NotificationsActivityVM: BaseViewModel {
                 case .success(let data):
                     if let model = data as? AllNotificationsModel {
                         if model.status == "SUCCESS" {
-                            UIApplication.shared.applicationIconBadgeNumber = 0
                             self.allNotificationData = model.data
-                            var count = 0
-                            let friendCount = model.data?.friendResult ?? []
-                            let inviteCount = model.data?.privateRoomResult ?? []
-//                            if friendCount.count > 0 || inviteCount.count > 0 {
-//                                count = friendCount.count + inviteCount.count
-//                                print("Notification Count:",count)
-//                                NotificationCenter.default.post(name: Notification.Name("HOME_NOTIFICATION_TAPPED"), object: count)
-//                            }
                         } else {
                             self.errorMessage = model.message
                         }

@@ -63,14 +63,22 @@ class ThumbnailTableViewCell: UITableViewCell {
     }
     
     func setupClosure() {
+        /// UPLOAD IMAGE RESPONSE
         self.viewModel.reloadListViewClosure = {
-//            debugPrint("Reload")
             self.imageUrl = self.viewModel.imageUploadResponse?.files?.first ?? ""
             self.hitCreateEventAPI()
         }
         
+        /// ADD ROOM RESPONSE
         self.viewModel.redirectControllerClosure = { [weak self] in
-//            debugPrint("Redirect")
+
+            /// ADDING EVENT TO APPLE CALENDAR
+            /*if let model = self?.viewModel.addRoomResponse?.data {
+                let startDate = model.startDate?.serverToLocalFormattedTime().getFormattedDate() ?? Date()
+                let endDate = model.endDate?.serverToLocalFormattedTime().getFormattedDate() ?? Date()
+                self?.parentVC.addEventToAppleCalendar(title: model.roomName ?? "", description: model.about, startDate: startDate, endDate: endDate, completion: nil)
+            }*/
+            
             if self?.roomType == "Public" {
                 self?.publicRoomDelegate?.didCreateRoom()
             } else {
@@ -78,6 +86,7 @@ class ThumbnailTableViewCell: UITableViewCell {
                 UserDefaultUtility.shared.removeInvitedFriendsIDs()
                 self?.createPrivateRoomDelegate?.didCreateRoom()
             }
+            
         }
     }
     
@@ -104,21 +113,7 @@ class ThumbnailTableViewCell: UITableViewCell {
         if sender.currentTitle == "Create Chat" {
             
             self.hitUploadImageAPI()
-            /*
-            let enteredDateTime = "\(UserDefaultUtility.shared.getDate()) \(UserDefaultUtility.shared.getStartTime())"
-            let enteredDate = enteredDateTime.checkPastTime()
-            let currentDate = currentDateTime()
-            if enteredDate == currentDate {
-//                print("EQUAL")
-                parentVC.showBaseAlert("Events can't be created for past time.")
-            } else if enteredDate < currentDate {
-//                print("LESS THAN CURRENT")
-                parentVC.showBaseAlert("Events can't be created for past time.")
-            }  else if enteredDate > currentDate {
-//                print("GREATER THAN CURRENT")
-            }
-            */
-            
+
         }
     }
     

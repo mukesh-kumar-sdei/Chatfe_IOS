@@ -35,9 +35,14 @@ class HomePageViewModel: BaseViewModel {
         }
     }
     
+    var notificationResp: NotificationsData? {
+        didSet {
+            self.reloadListViewClosure1?()
+        }
+    }
+    
     func getAllRooms(params:[String:Any]) {
         self.isLoading = true
-       // let params: [String:Any] = [:]
         userService.getAllRooms(params) { (result) in
             self.isLoading = false
             switch result {
@@ -52,16 +57,11 @@ class HomePageViewModel: BaseViewModel {
                 }
                 self.roomResponse = model
                 self.getJoinedRooms()
-//                AppInstance.shared.allEvents = model
-//                CalendarManager.shared.addEventToCalendar(dataArr: model.data ?? [])
                 self.redirectControllerClosure?()
             case .error(let message):
                 self.isSuccess = false
                 self.errorMessage = message
             case .customError(let errorModel):
-//                guard let model = errorModel as? ErrorBaseModel else {
-//                    return
-//                }
                 self.roomErrorResponse = errorModel
                 self.redirectControllerClosure?()
             }
@@ -80,6 +80,7 @@ class HomePageViewModel: BaseViewModel {
                         AppInstance.shared.allJoinedEvents = model
                         Persistence.cacheJoinedRooms(model.data)
                         NotificationCenter.default.post(name: Notification.Name.JOINED_ROOMS_RESPONSE, object: model.data)
+                        self.getAllNotifications()
                     } else {
                         self.errorMessage = model.message
                     }
@@ -180,4 +181,31 @@ class HomePageViewModel: BaseViewModel {
             }
         }
     }
+    
+    
+    // GET NOTIFICATIONs COUNT
+    func getAllNotifications() {
+//        self.isLoading = true
+        userService.getAllNotificationsAPI { (result) in
+            DispatchQueue.global(qos: .background).async {
+//            DispatchQueue.main.async {
+                self.isLoading = false
+                switch result {
+                case .success(let data):
+                    if let model = data as? AllNotificationsModel {
+                        if model.status == "SUCCESS" {
+                            self.notificationResp = model.data
+                        } else {
+                            self.errorMessage = model.message
+                        }
+                    }
+                case .error(let message):
+                    self.errorMessage = message
+                case .customError(let errorModel):
+                    self.errorMessage = errorModel.message
+                }
+            }
+        }
+    }
+    
 }

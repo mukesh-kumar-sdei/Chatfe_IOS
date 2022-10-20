@@ -233,7 +233,6 @@
 		0B69E683281FF83A005263F5 /* FavDrinkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B69E681281FF83A005263F5 /* FavDrinkCollectionViewCell.xib */; };
 		0B82EE80282CDDFE006F001C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82EE7F282CDDFE006F001C /* SearchViewController.swift */; };
 		0B82EE86282CDE35006F001C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82EE85282CDE35006F001C /* MessagesViewController.swift */; };
-		0B82EE8C282CDE69006F001C /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82EE8B282CDE69006F001C /* CalendarViewController.swift */; };
 		0B82EE90282CF320006F001C /* ProfileImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82EE8E282CF320006F001C /* ProfileImageTableViewCell.swift */; };
 		0B82EE91282CF320006F001C /* ProfileImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B82EE8F282CF320006F001C /* ProfileImageTableViewCell.xib */; };
 		0B82EE94282CF553006F001C /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82EE92282CF553006F001C /* ProfileNameTableViewCell.swift */; };
@@ -546,7 +545,6 @@
 		0B69E681281FF83A005263F5 /* FavDrinkCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavDrinkCollectionViewCell.xib; sourceTree = "<group>"; };
 		0B82EE7F282CDDFE006F001C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B82EE85282CDE35006F001C /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		0B82EE8B282CDE69006F001C /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0B82EE8E282CF320006F001C /* ProfileImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageTableViewCell.swift; sourceTree = "<group>"; };
 		0B82EE8F282CF320006F001C /* ProfileImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImageTableViewCell.xib; sourceTree = "<group>"; };
 		0B82EE92282CF553006F001C /* ProfileNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -1701,7 +1699,6 @@
 			children = (
 				01040A2E2845D15200401985 /* CalendarVC.swift */,
 				01401B1C284730EE002911C1 /* AppleCalendarVC.swift */,
-				0B82EE8B282CDE69006F001C /* CalendarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2661,7 +2658,6 @@
 				0B6109E7281264ED000152DC /* SignInViewController.swift in Sources */,
 				01DE3D022876D70A006C6713 /* DateTableViewCell.swift in Sources */,
 				014F7F7E28588E9C0094E0ED /* NotificationsActivityVM.swift in Sources */,
-				0B82EE8C282CDE69006F001C /* CalendarViewController.swift in Sources */,
 				0B0D81ED282120A300693DA3 /* AddRoomResponseModel.swift in Sources */,
 				010BEEA3286F128100036B24 /* WebViewController.swift in Sources */,
 				01F48DFF284F562100A6EC26 /* SignUpViewModel.swift in Sources */,

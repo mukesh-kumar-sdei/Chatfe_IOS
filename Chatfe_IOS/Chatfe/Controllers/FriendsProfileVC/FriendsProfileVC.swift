@@ -183,7 +183,6 @@ extension FriendsProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func friendButtonTapped(_ sender: UIButton) {
-        
         let data = profileData?[sender.tag]
         if let friendID = data?._id, let requestStatus = data?.requestStatus, let isBlocked = data?.isBlocked {
             self.navigateToBottomOptionVC(friendID: friendID, requestStatus: requestStatus, isBlocked: isBlocked, isFromOptionButton: false)

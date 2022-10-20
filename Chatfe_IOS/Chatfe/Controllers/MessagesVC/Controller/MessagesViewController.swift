@@ -41,7 +41,7 @@ class MessagesViewController: BaseViewController {
         
         self.lblBadge.layer.masksToBounds = true
         self.lblBadge.cornerRadius = 8.5
-        self.lblBadge.isHidden = true
+//        self.lblBadge.isHidden = true
         recentCollectionView.dataSource = self
         recentCollectionView.delegate = self
         chatFriendsTableView.dataSource = self
@@ -72,16 +72,6 @@ class MessagesViewController: BaseViewController {
     
     @objc func listenOnlineOfflineUsers(_ notification: Notification) {
         if let model = notification.object as? UserOnlineModel {
-//            if model.isOnline ?? false {
-//                if let userID = model.userId {
-//                    AppInstance.shared.onlineUsersArr?.append(userID)
-//                }
-//            } else if !(model.isOnline ?? false) {
-//                if let index = AppInstance.shared.onlineUsersArr?.firstIndex(where: {$0 == model.userId}) {
-//                    AppInstance.shared.onlineUsersArr?.remove(at: index)
-//                }
-//            }
-//
             self.conversationData?.enumerated().forEach({ (index, item) in
                 if item.receiverData?.receiverId == model.userId {
                     self.conversationData?[index].receiverData?.isOnline = model.isOnline
@@ -96,6 +86,7 @@ class MessagesViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.viewModel.recentConnectionAPI()
         
         SocketIOManager.shared.emitUnreadCountEvent()

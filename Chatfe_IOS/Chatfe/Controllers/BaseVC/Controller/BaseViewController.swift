@@ -166,6 +166,24 @@ extension BaseViewController {
 
 // MARK: - APPLE CALENDAR OPERATION METHODs
 extension BaseViewController {
+    /// ADD EVENT
+    func addEventToAppleCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        if EKEventStore.authorizationStatus(for: .event) == .authorized {
+            let event = EKEvent(eventStore: eventStore)
+            event.title = title
+            event.startDate = startDate
+            event.endDate = endDate
+            event.recurrenceRules = .none
+            event.calendar = eventStore.defaultCalendarForNewEvents
+            do {
+                try eventStore.save(event, span: .thisEvent)
+            } catch let e as NSError {
+                debugPrint(e.localizedDescription)
+                return
+            }
+        }
+    }
+    
     /// REMOVE EVENT
     func removeEventFromAppleCalendar(event: EKEvent) {
         if EKEventStore.authorizationStatus(for: .event) == .authorized {

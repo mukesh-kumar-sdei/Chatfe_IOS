@@ -47,13 +47,13 @@ class SearchViewController: BaseViewController {
 //        self.lblBadge.isHidden = true
         registerNIBs()
         initialSetup()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationCount(_:)), name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         hitGetRecentSearchAPI()
         setupClosures()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationCount(_:)), name: Notification.Name.PUSH_NOTIFICATION_COUNT, object: nil)
+        
 //        NotificationCenter.default.addObserver(self, selector: #selector(updateNotificationCount(_:)), name: Notification.Name("HOME_NOTIFICATION_TAPPED"), object: nil)
     }
     

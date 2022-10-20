@@ -103,7 +103,7 @@ extension FriendsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.size.width / 3)
+        let width = (collectionView.bounds.size.width / 3) - 5
         return CGSize(width: width, height: 130.0)
     }
 }

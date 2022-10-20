@@ -108,7 +108,7 @@ class MainContainerVC: BaseViewController {
     
     func updateBadgeCount(count: Int?) {
         if let count = count {
-            self.lblMsgCount.isHidden = count > 0 ? false : true
+            self.lblMsgCount.isHidden = count > 0 && !btnGrpChat.isHidden ? false : true
             self.lblMsgCount.text = "\(count)"
         }
     }
@@ -164,8 +164,8 @@ class MainContainerVC: BaseViewController {
                                 self.startCountDownTimer(duration: elapsedTime)
                             }
                         }
+//                        self.openGroupChatScreen()
                         return
-                        
                     } else {
                         /// WHEN EVENT ENDs - GROUP CHAT ICON HIDES
                         //UserDefaultUtility.shared.removeChannelID()

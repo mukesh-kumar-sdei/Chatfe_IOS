@@ -10,7 +10,8 @@ import Foundation
 struct AddRoomResponse: Decodable {
     var status: String?
     var code: Int?
-    var data: String?
+//    var data: String?
+    var data: RoomData?
     var message: String?
     
     enum CodingKeys: String, CodingKey {
@@ -24,7 +25,8 @@ struct AddRoomResponse: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try? values.decodeIfPresent(String.self, forKey: .status)
         code = try? values.decodeIfPresent(Int.self, forKey: .code)
-        data = try? values.decodeIfPresent(String.self, forKey: .data)
+//        data = try? values.decodeIfPresent(String.self, forKey: .data)
+        data = try? values.decodeIfPresent(RoomData.self, forKey: .data)
         message = try? values.decodeIfPresent(String.self, forKey: .message)
     }
 }
