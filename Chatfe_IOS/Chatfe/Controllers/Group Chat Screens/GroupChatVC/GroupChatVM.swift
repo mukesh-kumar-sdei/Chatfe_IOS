@@ -84,9 +84,9 @@ class GroupChatVM: BaseViewModel {
                     if let model = data as? ChannelIdModel {
                         if model.status == APIKeys.success {
                             self.channelIDResp = model
-                        }/* else {
-                            self.errorMessage = model.message
-                        }*/
+                        } else {
+                            self.errorMessage = "Channel Id not found!"
+                        }
                     }
                 case .error(let message):
                     self.errorMessage = message

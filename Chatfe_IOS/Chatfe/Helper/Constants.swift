@@ -254,6 +254,7 @@ struct ApiEndpoints {
     
     static let getCategories            =   "category/getAll"
     static let getAllDrinks             =   "drink/getAll"
+    static let getDrinkBystatus         =   "drink/getDrinkBystatus?status=active"
     
     static let uploadImage              =   "upload"
     static let getProfile               =   "authentication/get/profile"

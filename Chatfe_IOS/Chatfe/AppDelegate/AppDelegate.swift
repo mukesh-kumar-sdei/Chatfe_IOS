@@ -44,9 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CalendarManager.shared.checkCalendarAccessStatus()
         
-        // INITIATING SOCKET CONNECTION
-        SocketIOManager.shared.establishConnection()
-
         /// TABBAR ITEM UNSELECTED IMAGE TINT COLOR
         UITabBar.appearance().unselectedItemTintColor = UIColor("#383D44")
         
@@ -197,25 +194,6 @@ extension AppDelegate: MessagingDelegate {
 
 
 /*
-extension AppDelegate {
-    
-    /// DEEP LINKING (http://www.chatfe.com/wave_id/episode_id/chapter_index)
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if url.pathComponents.count > 3 {
-            let waveId = url.pathComponents[1]
-            let episodeId = url.pathComponents[2]
-            let chapterIndex = url.pathComponents[3]
-            
-            let data = ["waveId"        : waveId,
-                        "episodeId"     : episodeId,
-                        "chapterIndex"  : chapterIndex]
-            NotificationCenter.default.post(name: NSNotification.Name.DeepLinkNotification, object: data)
-        }
-        return true
-    }
-}
-
-
 extension AppDelegate {
     
     /// DEEP LINKING (http://www.chatfe.com/room_id)

@@ -171,7 +171,6 @@ class EventGroupChatVC: BaseViewController {
                 self.updateUI(data: self.getChannelIdData)
                 
                 if let channelID = self.getChannelIdData?.channelId {
-//                    NotificationCenter.default.post(name: Notification.Name("GROUP_CHAT_CHANNEL_ID"), object: channelID)
                     /// HIT GET ROOM PARTICIPANTs API
                     self.viewModel.getEventMembers(channelID: channelID)
                 }
@@ -414,8 +413,10 @@ class EventGroupChatVC: BaseViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        if self.txtEnterMessage.text?.count != 0 {
+        if self.txtEnterMessage.text?.count ?? 0 > 0 {
             self.viewModel.sendTextMessageAPI(channelID: channelID, message: self.txtEnterMessage.text ?? "", messageId: "", type: "message", reaction: "")
+        } else {
+            print("SOMETHING WENT WRONG")
         }
     }
     

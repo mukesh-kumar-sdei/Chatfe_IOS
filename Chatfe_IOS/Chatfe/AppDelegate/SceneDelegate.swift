@@ -49,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-        SocketIOManager.shared.reConnect()
+        socketReconnect()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -60,9 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        if !SocketIOManager.shared.isSocketConnected() {
-            SocketIOManager.shared.reConnect()
-        }
+        socketReconnect()
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
@@ -77,6 +75,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         PersistentStorage.shared.saveContext()
     }
     
+    func socketReconnect() {
+        if UserDefaultUtility.shared.getUserId() != nil && UserDefaultUtility.shared.getUserId() != "" {
+            if !SocketIOManager.shared.isSocketConnected() {
+                SocketIOManager.shared.reConnect()
+            }
+        }
+    }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         // DEEP LINKING

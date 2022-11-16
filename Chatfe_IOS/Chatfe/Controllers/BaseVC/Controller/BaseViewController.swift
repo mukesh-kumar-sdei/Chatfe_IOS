@@ -25,6 +25,7 @@ class BaseViewController: UIViewController {
         }
     }
     
+    // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideNavigationBar(true, animated: true)

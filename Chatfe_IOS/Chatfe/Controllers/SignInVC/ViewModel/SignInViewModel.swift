@@ -42,6 +42,7 @@ class SignInViewModel: BaseViewModel {
                 }
                 if let id = model.data?.id {
                     UserDefaultUtility.shared.saveUserId(userId: id)
+                    AppInstance.shared.userId = id
                 }
                 if let username = self.googleLoginResponse?.data?.username {
                     UserDefaultUtility.shared.saveUsername(name: username)
@@ -87,6 +88,7 @@ class SignInViewModel: BaseViewModel {
                 }
                 if let id = model.data?.id {
                     UserDefaultUtility.shared.saveUserId(userId: id)
+                    AppInstance.shared.userId = id
                 }
                 if let username = model.data?.username {
                     UserDefaultUtility.shared.saveUsername(name: username)
@@ -133,6 +135,7 @@ class SignInViewModel: BaseViewModel {
                 }
                 if let id = model.data?.id {
                     UserDefaultUtility.shared.saveUserId(userId: id)
+                    AppInstance.shared.userId = id
                 }
                 if let username = model.data?.username {
                     UserDefaultUtility.shared.saveUsername(name: username)
@@ -173,6 +176,7 @@ class SignInViewModel: BaseViewModel {
                 }
                 if let id = model.data?.id {
                     UserDefaultUtility.shared.saveUserId(userId: id)
+                    AppInstance.shared.userId = id
                 }
                 if let username = model.data?.username {
                     UserDefaultUtility.shared.saveUsername(name: username)

@@ -19,4 +19,5 @@ final class AppInstance {
     var allJoinedEvents: RoomJoinedModel?
     var getGrpChatModel: [GetEventChatsModel]?
     var onlineUsersArr: [String]?
+    var userId: String?
 }

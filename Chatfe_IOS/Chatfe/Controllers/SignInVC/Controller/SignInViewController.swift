@@ -44,7 +44,7 @@ class SignInViewController: BaseViewController {
         super.viewDidLoad()
 
         self.hideBackButton()
-//        self.hideKeyboardWhenTappedAround()
+
         setupView()
         appleSignInRequest()
         facebookLogin()

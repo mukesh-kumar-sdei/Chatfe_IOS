@@ -82,7 +82,8 @@ protocol UserServiceProtocol {
 public class UserService: APIService, UserServiceProtocol {
     
     func getAllDrinks(_ params: KeyValue, completion: @escaping (Result<Any>) -> Void) {
-        let serviceConfig: Service.config = (.GET, ApiEndpoints.getAllDrinks, false)
+//        let serviceConfig: Service.config = (.GET, ApiEndpoints.getAllDrinks, false)
+        let serviceConfig: Service.config = (.GET, ApiEndpoints.getDrinkBystatus, false)
         super.startService(config: serviceConfig, parameters: params, files: nil, modelType: FavouriteDrinkResponse.self) { (result) in
             switch result {
             case .success(let data):

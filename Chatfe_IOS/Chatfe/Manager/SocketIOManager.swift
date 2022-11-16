@@ -10,10 +10,11 @@ import SocketIO
 
 //let manager = SocketManager(socketURL: URL(string: Config.socketURL)!, config: [.log(true), .compress])
 //let manager = SocketManager(socketURL: URL(string: Config.socketURL)!, config: [.log(false), .compress])
-let userIdObj = ["userId": UserDefaultUtility.shared.getUserId() ?? ""]
-let manager = SocketManager(socketURL: URL(string: Config.socketURL)!, config: [.connectParams(userIdObj), .log(true), .compress])
+let userIdObj = ["userId": UserDefaultUtility.shared.getUserId() ?? (AppInstance.shared.userId ?? "")]
+//print("USER ID FOR SOCKET :> \(userIdObj)")
+var manager = SocketManager(socketURL: URL(string: Config.socketURL)!, config: [.connectParams(userIdObj), .log(true), .compress])
+var socket = manager.defaultSocket
 
-let socket = manager.defaultSocket
 typealias completionHandler = (_ data: [Any]?) -> Void
 
 private struct SocketKeys {
@@ -93,7 +94,7 @@ class SocketIOManager: NSObject {
     
     override init() {
         super.init()
-        
+        socket = manager.defaultSocket
     }
     
     
@@ -103,6 +104,14 @@ class SocketIOManager: NSObject {
             return true
         }
         return false
+    }
+    
+    func establishConnectionAfterLogin(userId: String) {
+        let userIdObj = ["userId": userId]
+//        print("USER ID FOR SOCKET :> \(userIdObj)")
+        manager = SocketManager(socketURL: URL(string: Config.socketURL)!, config: [.connectParams(userIdObj), .log(true), .compress])
+        socket = manager.defaultSocket
+        socket.connect()
     }
     
     func establishConnection() {
@@ -138,6 +147,13 @@ class SocketIOManager: NSObject {
             socket.emit(SocketKeys.join, with: [params]) {
                 printMessage("\n--> SOCKET JOINED SUCCESSFULLY with User ID :> \(params)")
             }
+        }
+    }
+    
+    func joinSocket(_ userId: String) {
+        let params = [APIKeys.userId: userId]
+        socket.emit(SocketKeys.join, with: [params]) {
+            printMessage("\n--> SOCKET JOINED SUCCESSFULLY with User ID :> \(params)")
         }
     }
     
@@ -224,7 +240,7 @@ class SocketIOManager: NSObject {
                       APIKeys.chatHeadID    : chatHeadID,
                       APIKeys.readers       : readers
                     ] as [String : Any]
-        socket.emit(SocketKeys.readMessage, with: [params])
+        socket.emit(SocketKeys.readMessage, with: [params], completion: nil)
 //        print("\n--> READ MESSAGE EMITTED :> \(params)")
     }
     
@@ -234,7 +250,7 @@ class SocketIOManager: NSObject {
                       APIKeys.channelID    : channelID,
                       APIKeys.readers       : readers
                     ] as [String : Any]
-        socket.emit(SocketKeys.readMessage, with: [params])
+        socket.emit(SocketKeys.readMessage, with: [params], completion: nil)
 //        print("\n--> READ MESSAGE EMITTED :> \(params)")
     }
     
@@ -261,7 +277,7 @@ class SocketIOManager: NSObject {
     
     func emitUnreadCount(userId: String) {
         let params = [APIKeys.userId: userId]
-        socket.emit(SocketKeys.unreadMsgCount, with: [params])
+        socket.emit(SocketKeys.unreadMsgCount, with: [params], completion: nil)
     }
     
     func unreadCount(completion: @escaping completionHandler) {
@@ -309,12 +325,12 @@ class SocketIOManager: NSObject {
     // ====================================================
     func joinGroupChat(channelID: String) {
         let params = [APIKeys.channelID: channelID]
-        socket.emit(SocketKeys.joinEventChat, with: [params])
+        socket.emit(SocketKeys.joinEventChat, with: [params], completion: nil)
         printMessage("\n--> JOIN Group Chat with ChannelID :> \(params)")
     }
     
     func sendGroupChatMessage(params: [String: Any]) {
-        socket.emit(SocketKeys.sendEventMessage, with: [params])
+        socket.emit(SocketKeys.sendEventMessage, with: [params], completion: nil)
     }
     
     func receiveGroupChatMessage(completion: @escaping completionHandler) {
@@ -354,7 +370,7 @@ class SocketIOManager: NSObject {
     
     func emitUnreadGCCount(channelId: String, userId: String) {
         let params = [APIKeys.channelID: channelId, APIKeys.userId: userId]
-        socket.emit(SocketKeys.grpUnreadMsg, with: [params])
+        socket.emit(SocketKeys.grpUnreadMsg, with: [params], completion: nil)
     }
     
     func unreadGCCount(completion: @escaping completionHandler) {
@@ -369,7 +385,7 @@ class SocketIOManager: NSObject {
                       APIKeys.channelID     : channelId,
                       APIKeys.isTyping      : isTyping
                     ] as [String : Any]
-        socket.emit(SocketKeys.typingEventStatus, with: [params])
+        socket.emit(SocketKeys.typingEventStatus, with: [params], completion: nil)
     }
     
     func listenGCTypingStatus(completion: @escaping completionHandler) {

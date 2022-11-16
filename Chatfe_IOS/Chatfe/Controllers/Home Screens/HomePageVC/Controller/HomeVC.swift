@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SocketIO
 
 struct FilterScreen {
     static var isFromFilterScreen = false
@@ -79,8 +80,16 @@ class HomeVC: BaseViewController {
         self.lblBadge.cornerRadius = 8.5
 
         // IN CASE USER CAME OUT FROM LOGOUT - Need to connect Socket again
-        if !SocketIOManager.shared.isSocketConnected() {
-            SocketIOManager.shared.establishConnection()
+//        if !SocketIOManager.shared.isSocketConnected() {
+//            SocketIOManager.shared.establishConnection()
+//        }
+        
+        if UserDefaultUtility.shared.getUserId() == "" || UserDefaultUtility.shared.getUserId() == nil {
+            SocketIOManager.shared.establishConnectionAfterLogin(userId: AppInstance.shared.userId ?? "")
+        } else {
+            if !SocketIOManager.shared.isSocketConnected() {
+                SocketIOManager.shared.establishConnection()
+            }
         }
         
         self.roomTableView.delegate = self

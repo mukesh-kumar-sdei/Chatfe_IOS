@@ -32,17 +32,28 @@ class MainContainerVC: BaseViewController {
     var senderColor = "49C6D8"
     var unreadCount = 0
     var counter = 0
-    
+    var isOngoingEvent = false
     
     // MARK: - ==== VC LIFECYCLE ====
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        connectSocket()
         setupUI()
         createInterstitialGoogleAd()
         notificationObservers()
         setupClosures()
         listenGCReceiveMessageEvent()
+    }
+    
+    func connectSocket() {
+        if UserDefaultUtility.shared.getUserId() == "" || UserDefaultUtility.shared.getUserId() == nil {
+            SocketIOManager.shared.establishConnectionAfterLogin(userId: AppInstance.shared.userId ?? "")
+        } else {
+            if !SocketIOManager.shared.isSocketConnected() {
+                SocketIOManager.shared.establishConnection()
+            }
+        }
     }
     
     func setupUI() {
@@ -67,7 +78,7 @@ class MainContainerVC: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateGCUnreadCount(_:)), name: Notification.Name("UPDATE_GROUPCHAT_COUNT"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(showOngoingEvent(_:)), name: Notification.Name("SHOW_ONGOING_EVENT"), object: nil)
     }
-    
+    /*
     @objc func showOngoingEvent(_ notification: Notification) {
         if let endDate = notification.object as? Date {
             DispatchQueue.main.async {
@@ -80,7 +91,7 @@ class MainContainerVC: BaseViewController {
                 }
             }
         }
-    }
+    }*/
     
     @objc func updateGCUnreadCount(_ notification: Notification) {
         if let count = notification.object as? Int {
@@ -135,6 +146,24 @@ class MainContainerVC: BaseViewController {
             self.btnGrpChat.isHidden = !show
         }
     }
+    /*
+    func checkOngoingEvent() {
+        if isOngoingEvent {
+            let event = Persistence.cachedOngoingRoom()
+            
+            let currentDateTime = currentDateTime()
+            guard let endDate = event?.roomId?.endDate?.convertStringToDate() else { return }
+            self.viewModel.getChannelID()
+            self.showHideGrpChatButton(show: true)
+            // TODO: - FOR REMAINING DURATION INSTEAD TOTAL
+//                            let elapsedTime = currentDateTime - endDate
+            let dateComponent = Calendar.current.dateComponents([.second], from: currentDateTime, to: endDate)
+            if let elapsedTime = dateComponent.second {
+//                                printMessage("--> ELAPSED TIME :> \(elapsedTime)")
+                self.startCountDownTimer(duration: elapsedTime)
+            }
+        }
+    }*/
     
     @objc func checkEventStartedTime() {
         let joinedRooms = Persistence.cachedJoinedRooms()
@@ -151,6 +180,9 @@ class MainContainerVC: BaseViewController {
                     /// SHOW CIRCULAR 'GROUP CHAT' BUTTON WHEN ANY EVENT STARTED
                     if (startDateResult == .orderedSame || startDateResult == .orderedAscending) && endDateResult == .orderedDescending {
     //                    printMessage("--> ONGOING EVENT :> \(event)")
+//                        self.isOngoingEvent = true
+//                        Persistence.cacheOngoingRoom(event)
+                        
                         self.counter += 1
                         
                         if self.counter == 1 {
@@ -173,11 +205,14 @@ class MainContainerVC: BaseViewController {
                         self.stopTimer()
                         self.lblMsgCount.isHidden = true
                         self.counter = 0
+                        
+                        self.isOngoingEvent = false
+                        Persistence.removeOngoingRoom()
                     }
                 }
             }
             
-            
+//            self.checkOngoingEvent()
             
         } else {
             showHideGrpChatButton(show: false)
@@ -265,7 +300,7 @@ class MainContainerVC: BaseViewController {
     
     func openGroupChatScreen() {
         let openGrpEventVC = kChatStoryboard.instantiateViewController(withIdentifier: EventGroupChatVC.className) as! EventGroupChatVC
-        
+        openGrpEventVC.channelID = self.getChannelIdData?.channelId ?? ""
         self.navigationController?.pushViewController(openGrpEventVC, animated: true)
     }
 }
