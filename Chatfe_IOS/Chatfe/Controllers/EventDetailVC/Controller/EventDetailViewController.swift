@@ -64,9 +64,11 @@ class EventDetailViewController: BaseViewController {
 
 //        if eventType == "Public" {
         if eventType == EventType.Public.rawValue {
-            self.optionBtn.isUserInteractionEnabled = false
+//            self.optionBtn.isUserInteractionEnabled = false
+            self.optionBtn.isHidden = true
         } else {
-            self.optionBtn.isUserInteractionEnabled = true
+//            self.optionBtn.isUserInteractionEnabled = true
+            self.optionBtn.isHidden = false
         }
         friendsTableView.dataSource = self
         friendsTableView.delegate = self

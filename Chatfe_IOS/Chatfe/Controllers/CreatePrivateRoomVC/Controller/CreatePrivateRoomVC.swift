@@ -161,7 +161,7 @@ extension CreatePrivateRoomVC: UITableViewDelegate, UITableViewDataSource {
             cell.btnInvite.tag = indexPath.row
             cell.btnInvite.addTarget(self, action: #selector(inviteBtnTapped(_:)), for: .touchUpInside)
             cell.friendsTagView.delegate = self
-            /*8if invitedFriendsArr.count > 0 {
+            /*if invitedFriendsArr.count > 0 {
                 let fullname = invitedFriendsArr.compactMap({$0.fullname})
                 cell.setupTagUI(titles: fullname)
             }*/

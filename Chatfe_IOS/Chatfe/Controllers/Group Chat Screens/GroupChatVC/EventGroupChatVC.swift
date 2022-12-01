@@ -32,13 +32,13 @@ class EventGroupChatVC: BaseViewController {
     }()
     
     var channelID = ""
-    var getGrpMessagesData = [GetEventChatsModel]() {
+    var getGrpMessagesData = [GetEventChatsModel]()/* {
         didSet {
             DispatchQueue.main.async {
                 self.grpChatTableView.reloadData()
             }
         }
-    }
+    }*/
     var selectedRowReaction = 0
     var strUploadedImage: String?
 
@@ -205,7 +205,7 @@ class EventGroupChatVC: BaseViewController {
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.getGrpMessagesData = self.viewModel.getGroupChats ?? []
-                
+                self.grpChatTableView.reloadData()
                 ///[START] MAPPING MATCHTYPE & COLOR
                 self.roomMembersList?.forEach({ memberData in
                     if let id = memberData._id, let matchType = memberData.matchType, let color = memberData.color {
@@ -235,7 +235,7 @@ class EventGroupChatVC: BaseViewController {
                 ///[END]
                 
                 self.txtEnterMessage.text = ""
-                self.scrollToBottom(false)
+//                self.scrollToBottom(false)
                 
                 /// EMIT GROUP UNREAD COUNT EVENT
                 if let channelID = SelectedVote.channelData?.channelId {
@@ -496,7 +496,23 @@ extension EventGroupChatVC: UITableViewDelegate, UITableViewDataSource {
 //        let memberData = self.members_matchType_color?[indexPath.row]
         
         if data.senderId?._id == UserDefaultUtility.shared.getUserId() {
-            if data.messageType == "message" {
+            if data.messageType == "image" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: SenderGCImageCell.className) as! SenderGCImageCell
+                cell.selectionStyle = .none
+
+//                let senderColor = UIColor(cellColors.randomElement() ?? "FFFFFF")
+//                let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
+//                setAttributedText(cell: cell, senderName: senderName, senderText: "", senderColor: senderColor)
+                
+                cell.showEmojiReaction(messages: data)
+                cell.showImage(strImage: data.message ?? "")
+                
+                cell.sentImageButton.tag = indexPath.row
+                cell.sentImageButton.addTarget(self, action: #selector(imageButtonTapped(_:)), for: .touchUpInside)
+                
+                return cell
+            } else {
+//            if data.messageType == "message" {
                 let cell = tableView.dequeueReusableCell(withIdentifier: SenderGroupChatCell.className) as! SenderGroupChatCell
                 cell.selectionStyle = .none
 //                cell.updateImages(data: data)
@@ -538,40 +554,41 @@ extension EventGroupChatVC: UITableViewDelegate, UITableViewDataSource {
                 cell.messageView.delegate = self
                 
                 return cell
-            } else if data.messageType == "image" {
-                let cell = tableView.dequeueReusableCell(withIdentifier: SenderGCImageCell.className) as! SenderGCImageCell
+            }
+
+        } else {
+            if data.messageType == "image" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: GroupChatImageCell.className) as! GroupChatImageCell
                 cell.selectionStyle = .none
-//                cell.imgMatchPref.image = Images.matchMoreBW
-        //        let senderColor = UIColor(cellColors[indexPath.row])
-//                let senderColor = UIColor(cellColors.randomElement() ?? "FFFFFF")
                 
-//                let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
-//                setAttributedText(cell: cell, senderName: senderName, senderText: "", senderColor: senderColor)
+                cell.updateMatchPrefIcon(matchType: data.senderId?.matchType ?? "")
+
+                let senderColor = UIColor(data.senderId?.color ?? "808080")
+                let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
+                setAttributedText(cell: cell, senderName: senderName, senderText: "", senderColor: senderColor)
+                
                 cell.showEmojiReaction(messages: data)
                 cell.showImage(strImage: data.message ?? "")
                 
                 cell.sentImageButton.tag = indexPath.row
                 cell.sentImageButton.addTarget(self, action: #selector(imageButtonTapped(_:)), for: .touchUpInside)
                 
+                /// FOR EMOJI REACTIONs
+                cell.pictureView.tag = indexPath.row
+                cell.pictureView.delegate = self
+                
                 return cell
-            }
-//            return cell
-        } else {
-            if data.messageType == "message" {
+            } else {
+//            if data.messageType == "message" {
     //            let cell = tableView.dequeueReusableCell(withIdentifier: SenderGroupChatCell.className) as! SenderGroupChatCell
                 let cell = tableView.dequeueReusableCell(withIdentifier: ReceiverGroupChatCell.className) as! ReceiverGroupChatCell
                 cell.selectionStyle = .none
     
-//                let senderColor = UIColor(cellColors.randomElement() ?? "")
-//                let senderColor = UIColor(data.senderId?.color ?? "")
-//                cell.updateImages(data: data)
-                
                 cell.updateImages(matchType: data.senderId?.matchType ?? "")
  
 //                let senderColor = UIColor(memberData.color ?? "")
                 let textMessage = data.message ?? ""
                 let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
-//                let senderColor = UIColor(data.senderId?.color ?? "49C6D8")
                 let senderColor = UIColor(data.senderId?.color ?? "808080")
                 setAttributedText(cell: cell, senderName: senderName, senderText: textMessage, senderColor: senderColor)
                 
@@ -611,35 +628,7 @@ extension EventGroupChatVC: UITableViewDelegate, UITableViewDataSource {
                 
                 return cell
             }
-            else if data.messageType == "image" {
-                let cell = tableView.dequeueReusableCell(withIdentifier: GroupChatImageCell.className) as! GroupChatImageCell
-                cell.selectionStyle = .none
-                
-                cell.updateMatchPrefIcon(matchType: data.senderId?.matchType ?? "")
-//                cell.imgMatchPref.image = Images.matchMoreBW
-        //        let senderColor = UIColor(cellColors[indexPath.row])
-//                let senderColor = UIColor(cellColors.randomElement() ?? "FFFFFF")
-//                let senderColor = UIColor(data.senderId?.color ?? "49C6D8")
-                let senderColor = UIColor(data.senderId?.color ?? "808080")
-                
-                let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
-                setAttributedText(cell: cell, senderName: senderName, senderText: "", senderColor: senderColor)
-                cell.showEmojiReaction(messages: data)
-                
-                cell.showImage(strImage: data.message ?? "")
-                
-                cell.sentImageButton.tag = indexPath.row
-                cell.sentImageButton.addTarget(self, action: #selector(imageButtonTapped(_:)), for: .touchUpInside)
-                
-                /// FOR EMOJI REACTIONs
-                cell.pictureView.tag = indexPath.row
-                cell.pictureView.delegate = self
-                
-                return cell
-            }
         }
-        
-        return UITableViewCell()
     }
     
     @objc func imageButtonTapped(_ sender: UIButton) {

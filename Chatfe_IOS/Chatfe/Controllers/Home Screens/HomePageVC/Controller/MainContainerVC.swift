@@ -26,6 +26,7 @@ class MainContainerVC: BaseViewController {
         return obj
     }()
     
+    var timer: Timer?
     var getChannelIdData: ChannelIdData?
     var roomMembersList: [ParticipantsData]?
     var members_matchType_color = [MembersColorNMatch]()
@@ -38,12 +39,15 @@ class MainContainerVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        isOngoingEvent = false
+        counter = 0
         connectSocket()
         setupUI()
         createInterstitialGoogleAd()
         notificationObservers()
         setupClosures()
         listenGCReceiveMessageEvent()
+        startTimer()
     }
     
     func connectSocket() {
@@ -70,12 +74,13 @@ class MainContainerVC: BaseViewController {
         countdownTimer.lineColor = AppColor.appBlueColor
         countdownTimer.cornerRadius = 30.0
         countdownTimer.layer.masksToBounds = true
+        countdownTimer.delegate = self
     }
     
     func notificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(checkEventStartedTime), name: Notification.Name.JOINED_ROOMS_RESPONSE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(listenGCUnreadCount), name: Notification.Name.UNREAD_GROUP_MESSAGE_COUNT, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateGCUnreadCount(_:)), name: Notification.Name("UPDATE_GROUPCHAT_COUNT"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(updateGCUnreadCount(_:)), name: Notification.Name("UPDATE_GROUPCHAT_COUNT"), object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(showOngoingEvent(_:)), name: Notification.Name("SHOW_ONGOING_EVENT"), object: nil)
     }
     /*
@@ -130,7 +135,7 @@ class MainContainerVC: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        startTimer()
+//        startTimer()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -169,6 +174,7 @@ class MainContainerVC: BaseViewController {
         let joinedRooms = Persistence.cachedJoinedRooms()
         if let eventDetails = joinedRooms {
             for event in eventDetails {
+//            eventDetails.forEach { event in
                 DispatchQueue.main.async {
                     guard let startDate = event.roomId?.startDate?.convertStringToDate() else { return }
                     guard let endDate = event.roomId?.endDate?.convertStringToDate() else { return }
@@ -179,35 +185,39 @@ class MainContainerVC: BaseViewController {
                     
                     /// SHOW CIRCULAR 'GROUP CHAT' BUTTON WHEN ANY EVENT STARTED
                     if (startDateResult == .orderedSame || startDateResult == .orderedAscending) && endDateResult == .orderedDescending {
-    //                    printMessage("--> ONGOING EVENT :> \(event)")
-//                        self.isOngoingEvent = true
+//                        printMessage("--> ONGOING EVENT :> \(String(describing: event.roomId?.roomName))")
+                        self.isOngoingEvent = true
 //                        Persistence.cacheOngoingRoom(event)
-                        
+
                         self.counter += 1
                         
+                        self.viewModel.getChannelID()
+                        self.showHideGrpChatButton(show: true)
+                        
                         if self.counter == 1 {
-                            self.viewModel.getChannelID()
-                            self.showHideGrpChatButton(show: true)
                             // TODO: - FOR REMAINING DURATION INSTEAD TOTAL
 //                            let elapsedTime = currentDateTime - endDate
                             let dateComponent = Calendar.current.dateComponents([.second], from: currentDateTime, to: endDate)
                             if let elapsedTime = dateComponent.second {
-//                                printMessage("--> ELAPSED TIME :> \(elapsedTime)")
-                                self.startCountDownTimer(duration: elapsedTime)
-                            }
+//                            printMessage("--> ELAPSED TIME :> \(elapsedTime)")
+                            self.startCountDownTimer(duration: elapsedTime)
                         }
+                    }
 //                        self.openGroupChatScreen()
                         return
                     } else {
-                        /// WHEN EVENT ENDs - GROUP CHAT ICON HIDES
-                        //UserDefaultUtility.shared.removeChannelID()
-                        self.showHideGrpChatButton(show: false)
-                        self.stopTimer()
-                        self.lblMsgCount.isHidden = true
-                        self.counter = 0
-                        
-                        self.isOngoingEvent = false
-                        Persistence.removeOngoingRoom()
+                        if !self.isOngoingEvent {
+//                            printMessage("--> ELSE PART EXECUTED...")
+                            /// WHEN EVENT ENDs - GROUP CHAT ICON HIDES
+                            //UserDefaultUtility.shared.removeChannelID()
+                            self.showHideGrpChatButton(show: false)
+//                            self.stopTimer()
+                            self.lblMsgCount.isHidden = true
+                            self.counter = 0
+                            
+                            self.isOngoingEvent = false
+                            Persistence.removeOngoingRoom()
+                        }
                     }
                 }
             }
@@ -221,6 +231,7 @@ class MainContainerVC: BaseViewController {
     
     func startCountDownTimer(duration: Int) {
         DispatchQueue.main.async {
+//            print("--> COUNTDOWN DURATION :> \(duration)")
             self.countdownTimer.lineColor = UIColor("#5EADD4")
             self.countdownTimer.trailLineColor = AppColor.appBlueColor
             
@@ -231,15 +242,19 @@ class MainContainerVC: BaseViewController {
     }
     
     func startTimer() {
-        AppInstance.shared.timer?.invalidate()
-        AppInstance.shared.timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(checkEventStartedTime), userInfo: nil, repeats: true)
-        printMessage("TIMER :> \(String(describing: AppInstance.shared.timer?.timeInterval))")
+        DispatchQueue.main.async {
+            self.isOngoingEvent = false
+//            AppInstance.shared.timer?.invalidate()
+            self.timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(self.checkEventStartedTime), userInfo: nil, repeats: true)
+//            printMessage("TIMER :> \(String(describing: self.timer))")
+//            printMessage("TIMER INTERVAL :> \(String(describing: self.timer?.timeInterval))")
+        }
     }
     
     func stopTimer() {
         DispatchQueue.main.async {
-            AppInstance.shared.timer?.invalidate()
-            AppInstance.shared.timer = nil
+            self.timer?.invalidate()
+            self.timer = nil
         }
     }
     
@@ -407,5 +422,15 @@ extension MainContainerVC {
                 }
             }
         }
+    }
+}
+
+
+extension MainContainerVC: SRCountdownTimerDelegate {
+    
+    func timerDidEnd(sender: SRCountdownTimer, elapsedTime: TimeInterval) {
+//        print("COUNTDOWN ELAPSED TIME :> \(elapsedTime)")
+        self.showHideGrpChatButton(show: false)
+        self.isOngoingEvent = false
     }
 }

@@ -165,6 +165,7 @@ class AppleCalendarVC: DayViewController {
         let nextVC = kHomeViewStoryboard.instantiateViewController(withIdentifier: EventDetailViewController.className) as! EventDetailViewController
         nextVC.id = arrData[row].roomId?._id ?? "" // arrData[row]._id ?? ""
 //        nextVC.hasJoinedRoom = arrData[row].hasRoomJoined ?? false
+        nextVC.eventType = arrData[row].roomId?.roomType ?? ""
         nextVC.eventDelegate = self
         nextVC.selectedRow = row
         self.navigationController?.pushViewController(nextVC, animated: true)

@@ -210,24 +210,6 @@ class ChatViewController: BaseViewController {
     
     
     // MARK: - ==== CUSTOM METHODs ====
-    /*
-    func startTimer() {
-        AppInstance.shared.timer?.invalidate()
-        AppInstance.shared.timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(hitOnlineStatusEvent), userInfo: nil, repeats: true)
-    }
-    
-    func stopTimer() {
-        DispatchQueue.main.async {
-            AppInstance.shared.timer?.invalidate()
-            AppInstance.shared.timer = nil
-        }
-    }
-    */
-    /*
-    @objc func hitOnlineStatusEvent() {
-        self.viewModel.onlineStatusEvent(receiverId: self.receiverID)
-    }
-    */
     func setupUI() {
         DispatchQueue.main.async {
             // GET OWN's USER ID & PROFILE IMAGE

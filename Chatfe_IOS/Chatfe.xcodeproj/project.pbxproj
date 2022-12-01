@@ -140,6 +140,8 @@
 		01C64F0F288FE4E50098F452 /* BlockListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C64F0E288FE4E50098F452 /* BlockListVM.swift */; };
 		01C64F12288FF0730098F452 /* GetBlockListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C64F11288FF0730098F452 /* GetBlockListModel.swift */; };
 		01CB032728A3D20900C9BFB6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CB032628A3D20900C9BFB6 /* Persistence.swift */; };
+		01D2986F2934E6A60085DB21 /* SelectDateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D2986E2934E6A60085DB21 /* SelectDateTVC.swift */; };
+		01D298712934E6DB0085DB21 /* SelectDateTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D298702934E6DB0085DB21 /* SelectDateTVC.xib */; };
 		01D4C2CE28926A430007B6BA /* AccountVisibilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D4C2CC28926A430007B6BA /* AccountVisibilityCell.swift */; };
 		01D4C2CF28926A430007B6BA /* AccountVisibilityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D4C2CD28926A430007B6BA /* AccountVisibilityCell.xib */; };
 		01D4C2D12892730D0007B6BA /* AccountVisibilityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D4C2D02892730D0007B6BA /* AccountVisibilityVC.swift */; };
@@ -152,8 +154,6 @@
 		01D9AB882863245C009C225B /* AllFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D9AB872863245C009C225B /* AllFriendsVC.swift */; };
 		01DE3D012876D70A006C6713 /* DateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DE3CFF2876D704006C6713 /* DateTableViewCell.xib */; };
 		01DE3D022876D70A006C6713 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DE3D002876D70A006C6713 /* DateTableViewCell.swift */; };
-		01DE3D052876E79C006C6713 /* SelectDateTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DE3D032876E798006C6713 /* SelectDateTVC.xib */; };
-		01DE3D062876E79C006C6713 /* SelectDateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DE3D042876E79B006C6713 /* SelectDateTVC.swift */; };
 		01DE3D09287700A9006C6713 /* RecentConnectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DE3D08287700A9006C6713 /* RecentConnectionModel.swift */; };
 		01DE3D0C28771242006C6713 /* AddFriendButtonTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DE3D0A28771242006C6713 /* AddFriendButtonTVC.swift */; };
 		01DE3D0D28771242006C6713 /* AddFriendButtonTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01DE3D0B28771242006C6713 /* AddFriendButtonTVC.xib */; };
@@ -451,6 +451,8 @@
 		01C64F0E288FE4E50098F452 /* BlockListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListVM.swift; sourceTree = "<group>"; };
 		01C64F11288FF0730098F452 /* GetBlockListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBlockListModel.swift; sourceTree = "<group>"; };
 		01CB032628A3D20900C9BFB6 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		01D2986E2934E6A60085DB21 /* SelectDateTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDateTVC.swift; sourceTree = "<group>"; };
+		01D298702934E6DB0085DB21 /* SelectDateTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectDateTVC.xib; sourceTree = "<group>"; };
 		01D4C2CC28926A430007B6BA /* AccountVisibilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVisibilityCell.swift; sourceTree = "<group>"; };
 		01D4C2CD28926A430007B6BA /* AccountVisibilityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountVisibilityCell.xib; sourceTree = "<group>"; };
 		01D4C2D02892730D0007B6BA /* AccountVisibilityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVisibilityVC.swift; sourceTree = "<group>"; };
@@ -463,8 +465,6 @@
 		01D9AB872863245C009C225B /* AllFriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFriendsVC.swift; sourceTree = "<group>"; };
 		01DE3CFF2876D704006C6713 /* DateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateTableViewCell.xib; sourceTree = "<group>"; };
 		01DE3D002876D70A006C6713 /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
-		01DE3D032876E798006C6713 /* SelectDateTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectDateTVC.xib; sourceTree = "<group>"; };
-		01DE3D042876E79B006C6713 /* SelectDateTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDateTVC.swift; sourceTree = "<group>"; };
 		01DE3D08287700A9006C6713 /* RecentConnectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConnectionModel.swift; sourceTree = "<group>"; };
 		01DE3D0A28771242006C6713 /* AddFriendButtonTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendButtonTVC.swift; sourceTree = "<group>"; };
 		01DE3D0B28771242006C6713 /* AddFriendButtonTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendButtonTVC.xib; sourceTree = "<group>"; };
@@ -1197,8 +1197,8 @@
 				0B381211282A6F6400BB460E /* RoomNameTableViewCell.xib */,
 				0B381214282A704700BB460E /* InviteFriendsTableViewCell.swift */,
 				0B381215282A704700BB460E /* InviteFriendsTableViewCell.xib */,
-				01DE3D042876E79B006C6713 /* SelectDateTVC.swift */,
-				01DE3D032876E798006C6713 /* SelectDateTVC.xib */,
+				01D2986E2934E6A60085DB21 /* SelectDateTVC.swift */,
+				01D298702934E6DB0085DB21 /* SelectDateTVC.xib */,
 				01DE3D002876D70A006C6713 /* DateTableViewCell.swift */,
 				01DE3CFF2876D704006C6713 /* DateTableViewCell.xib */,
 				0B38121C282A71AA00BB460E /* StartTimeTableViewCell.swift */,
@@ -2016,7 +2016,6 @@
 			isa = PBXGroup;
 			children = (
 				0100ED342896D0D300C54182 /* MainContainerVC.swift */,
-				01A7E8D528AF681D00C8C9EF /* MainContainerVM.swift */,
 				01A5CD372840A6A8002F3116 /* MainTabBarController.swift */,
 				01A5CD3528408EE3002F3116 /* HomeVC.swift */,
 				01E7DE99285226C70023DA5F /* MyEventsVC.swift */,
@@ -2027,6 +2026,7 @@
 		0BFCD697281A656F008B48A9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				01A7E8D528AF681D00C8C9EF /* MainContainerVM.swift */,
 				0BFCD6A2281AD7C1008B48A9 /* HomePageViewModel.swift */,
 			);
 			path = ViewModel;
@@ -2258,11 +2258,11 @@
 				01706240283E63EC00C0294E /* Home.storyboard in Resources */,
 				014F7F7C285888BC0094E0ED /* FriendRequestTableViewCell.xib in Resources */,
 				01F802EF2864522A00C94921 /* RecentSearchCell.xib in Resources */,
-				01DE3D052876E79C006C6713 /* SelectDateTVC.xib in Resources */,
 				0B381227282A742600BB460E /* ThumbnailTableViewCell.xib in Resources */,
 				0B381223282A724C00BB460E /* DurationTableViewCell.xib in Resources */,
 				01AD1FA62861B195003E569E /* InviteFriendsListCell.xib in Resources */,
 				0B381213282A6F6400BB460E /* RoomNameTableViewCell.xib in Resources */,
+				01D298712934E6DB0085DB21 /* SelectDateTVC.xib in Resources */,
 				014F7F78285870750094E0ED /* HeaderCell.xib in Resources */,
 				0B82EE99282CF69A006F001C /* DrinkTableViewCell.xib in Resources */,
 				0B82EEA5282D01D6006F001C /* AboutSectionTableViewCell.xib in Resources */,
@@ -2519,6 +2519,7 @@
 				01DE3D0C28771242006C6713 /* AddFriendButtonTVC.swift in Sources */,
 				010A938F28F53B8600C831B3 /* PickerViewBottomVC.swift in Sources */,
 				0BFF6D9D281BFA3E00E8C61F /* HomePageTableViewCell.swift in Sources */,
+				01D2986F2934E6A60085DB21 /* SelectDateTVC.swift in Sources */,
 				0B610A3528128E28000152DC /* FavouriteDrinkViewController.swift in Sources */,
 				015F695A28817799004F623B /* ChatImageCell.swift in Sources */,
 				014530B62845F6BD00652CD4 /* UpdateProfileResponse.swift in Sources */,
@@ -2535,7 +2536,6 @@
 				01E7DE982851D5780023DA5F /* AppInstance.swift in Sources */,
 				0B82EE80282CDDFE006F001C /* SearchViewController.swift in Sources */,
 				015F695D288183BD004F623B /* ChatImageViewController.swift in Sources */,
-				01DE3D062876E79C006C6713 /* SelectDateTVC.swift in Sources */,
 				01508CC0286D5D9A00887316 /* SenderChatCell.swift in Sources */,
 				0179751E289BD052007F10F1 /* GroupChatVM.swift in Sources */,
 				01401B2228479A35002911C1 /* ProfilePictureViewModel.swift in Sources */,

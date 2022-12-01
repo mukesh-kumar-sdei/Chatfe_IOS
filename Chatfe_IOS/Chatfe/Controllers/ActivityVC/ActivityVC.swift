@@ -70,7 +70,7 @@ class ActivityVC: BaseViewController {
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.getActivityData = self.viewModel.getActivityResp?.data
-                print("birthday:",self.getActivityData?.activity?.birthday)
+//                print("birthday:",self.getActivityData?.activity?.birthday)
                 self.birthdaySwitch.isOn = self.getActivityData?.activity?.birthday ?? false ? true:false
                 self.invitesSwitch.isOn = self.getActivityData?.activity?.invites ?? false ? true:false
                 self.upcomingRoomsSwitch.isOn = self.getActivityData?.activity?.upcomingRooms ?? false ? true:false
@@ -79,12 +79,12 @@ class ActivityVC: BaseViewController {
         }
         
         /// UPDATE ACTIVITY API RESPONSE
-        viewModel.redirectControllerClosure = { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                // UPDATE DATA
-            }
-        }
+//        viewModel.redirectControllerClosure = { [weak self] in
+//            guard let self = self else { return }
+//            DispatchQueue.main.async {
+//                // UPDATE DATA
+//            }
+//        }
         
     }
     
