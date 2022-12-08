@@ -73,10 +73,7 @@ class EventGroupChatVC: BaseViewController {
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(getGrpChatChannelID(_:)), name: Notification.Name("GROUP_CHAT_CHANNEL_ID"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getGrpChatMembers(_:)), name: Notification.Name("GROUP_CHAT_MEMBERS"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        IQKeyboardManager.shared().isEnableAutoToolbar = false
-        IQKeyboardManager.shared().isEnabled = false
+        handleKeyboardObservers()
         
         NotificationCenter.default.addObserver(self, selector: #selector(rejoinGroupChat), name: Notification.Name.SOCKET_RECONNECTED, object: nil)
     }
@@ -138,7 +135,7 @@ class EventGroupChatVC: BaseViewController {
             })
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared().isEnableAutoToolbar = true
@@ -235,7 +232,7 @@ class EventGroupChatVC: BaseViewController {
                 ///[END]
                 
                 self.txtEnterMessage.text = ""
-//                self.scrollToBottom(false)
+                self.scrollToBottom(false)
                 
                 /// EMIT GROUP UNREAD COUNT EVENT
                 if let channelID = SelectedVote.channelData?.channelId {
@@ -245,7 +242,6 @@ class EventGroupChatVC: BaseViewController {
         }
         
         /// IMAGE UPLOAD RESPONSE
-//        messageViewModel.redirectControllerClosure1 = { [weak self] in
         viewModel.redirectControllerClosure1 = { [weak self] in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -295,9 +291,11 @@ class EventGroupChatVC: BaseViewController {
     func setupUI() {
         viewRoundCornersFromBottom()
         self.txtEnterMessage.delegate = self
-        self.txtEnterMessage.keyboardDistanceFromTextField = 0.0
         self.txtEnterMessage.maxLength = 200
-        self.txtEnterMessage.keyboardToolbar.isHidden = true
+        self.txtEnterMessage.inputAccessoryView = UIView()
+        self.txtEnterMessage.keyboardDistanceFromTextField = 8
+//        self.txtEnterMessage.keyboardDistanceFromTextField = 0.0
+//        self.txtEnterMessage.keyboardToolbar.isHidden = true
         self.txtEnterMessage.keyboardToolbar.shouldHideToolbarPlaceholder = true
         self.txtEnterMessage.backgroundColor = .black
         self.txtEnterMessage.attributedPlaceholder = NSAttributedString(string: self.txtEnterMessage.placeholder ?? "",
@@ -645,42 +643,7 @@ extension EventGroupChatVC: UITableViewDelegate, UITableViewDataSource {
             self.grpChatTableView.scrollToRow(at: IndexPath(row: rowCount, section: 0), at: .bottom, animated: animated)
         }
     }
-    /*
-    func showMessageContent(cell: UITableViewCell?, indexPath: IndexPath, data: GetEventChatsModel) {
-//        if let cell = cell as? SenderGroupChatCell {
-        if let cell = cell as? ReceiverGroupChatCell {
-            cell.imgMatchPref.image = Images.matchMoreBW
-    //        let senderColor = UIColor(cellColors[indexPath.row])
-            let senderColor = UIColor(cellColors.randomElement() ?? "FFFFFF")
-            
-            let textMessage = data.message ?? ""
-            let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
-            setAttributedText(cell: cell, senderName: senderName, senderText: textMessage, senderColor: senderColor)
-            cell.showEmojiReaction(messages: data)
-            
-            /// FOR EMOJI REACTIONs
-            cell.messageView.tag = indexPath.row
-            cell.messageView.delegate = self
-        }
-    }
-    
-    func showPictureContent(cell: UITableViewCell?, indexPath: IndexPath, data: GetEventChatsModel) {
-        if let cell = cell as? GroupChatImageCell {
-            cell.imgMatchPref.image = Images.matchMoreBW
-    //        let senderColor = UIColor(cellColors[indexPath.row])
-            let senderColor = UIColor(cellColors.randomElement() ?? "FFFFFF")
-            
-            let textMessage = data.message ?? ""
-            let senderName = "\(data.senderId?.fname ?? "") \(data.senderId?.lname ?? "")"
-            setAttributedText(cell: cell, senderName: senderName, senderText: textMessage, senderColor: senderColor)
-            cell.showEmojiReaction(messages: data)
-            
-            /// FOR EMOJI REACTIONs
-            cell.pictureView.tag = indexPath.row
-            cell.pictureView.delegate = self
-        }
-    }
-    */
+  
 }
 
 
@@ -716,7 +679,7 @@ extension EventGroupChatVC {
     }
     
     func uploadImageAPI(image: UIImage, name: String, fileName: String) {
-        let imageData = image.jpegData(compressionQuality: 0.8)! as NSData
+        let imageData = image.jpegData(compressionQuality: 0.5)! as NSData
         let file = File(name: name, fileName: fileName, data: imageData as Data)
 //        messageViewModel.uploadProfilePic(files: [file])
         viewModel.uploadProfilePic(files: [file])
@@ -728,7 +691,15 @@ extension EventGroupChatVC {
 extension EventGroupChatVC: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if picker.sourceType == .camera {
+            self.handleKeyboardObservers()
+        }
         if let tempImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            let name = UUID().uuidString
+            let fileName = "\(name).jpg"
+            self.uploadImageAPI(image: tempImage, name: name, fileName: fileName)
+            self.dismiss(animated: true, completion: nil)
+        } else if let tempImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             let name = UUID().uuidString
             let fileName = "\(name).jpg"
             self.uploadImageAPI(image: tempImage, name: name, fileName: fileName)
@@ -739,6 +710,9 @@ extension EventGroupChatVC: UINavigationControllerDelegate, UIImagePickerControl
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        if picker.sourceType == .camera {
+            self.handleKeyboardObservers()
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -757,8 +731,6 @@ extension EventGroupChatVC {
         
         let attributedString1 = NSMutableAttributedString(string: "\(senderName): ", attributes: attributedNameColor)
         let attributedString2 = NSMutableAttributedString(string: senderText, attributes: attributedTextColor)
-        
-//        attributedString1.append(attributedString2)
 
         if let cell = cell as? SenderGroupChatCell {
             cell.lblChatMessage.attributedText = attributedString2
@@ -817,6 +789,10 @@ extension EventGroupChatVC: KickedOutDelegate {
 extension EventGroupChatVC: ProfilePreviewDelegate {
     
     func didCloseProfilePreview(result: Bool) {
+        handleKeyboardObservers()
+    }
+    
+    func handleKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         IQKeyboardManager.shared().isEnableAutoToolbar = false

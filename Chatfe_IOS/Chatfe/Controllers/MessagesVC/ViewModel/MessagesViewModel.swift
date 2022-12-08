@@ -157,7 +157,8 @@ class MessagesViewModel: BaseViewModel {
     func uploadProfilePic(files: [File]) {
 //        self.isLoading = true
         userService.uploadImage([:], files: files) { (result) in
-            DispatchQueue.global(qos: .background).async {
+//            DispatchQueue.global(qos: .background).async {
+            DispatchQueue.main.async {
                 self.isLoading = false
                 switch result {
                 case .success(let data):

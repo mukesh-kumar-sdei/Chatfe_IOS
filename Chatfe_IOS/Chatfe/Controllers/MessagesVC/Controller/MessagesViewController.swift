@@ -175,7 +175,10 @@ extension MessagesViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let recentChatVC = kHomeStoryboard.instantiateViewController(withIdentifier: RecentConnectionChatVC.className) as! RecentConnectionChatVC
-        recentChatVC.profileDetails = self.recentData?[indexPath.row]
+//        recentChatVC.profileDetails = self.recentData?[indexPath.row]
+        let data = self.recentData?[indexPath.row]
+        recentChatVC.friendId = data?._id ?? ""
+        recentChatVC.friendsName = "\(data?.fname ?? "") \(data?.lname ?? "")"
         self.navigationController?.pushViewController(recentChatVC, animated: true)
     }
 

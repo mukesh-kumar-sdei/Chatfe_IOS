@@ -93,6 +93,7 @@
             <connections>
                 <outlet property="btnAddFriend" destination="Xk0-XL-ug9" id="egi-gf-3n7"/>
                 <outlet property="imgAddFriend" destination="gBe-qO-Oxx" id="6rF-E7-Hrd"/>
+                <outlet property="lblAddFriend" destination="oGl-3c-2V4" id="lWC-hr-LTt"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="129.91071428571428"/>
         </tableViewCell>

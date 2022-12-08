@@ -216,7 +216,7 @@ extension APIService {
     func handleResponse<T: Decodable>(data: Data, response: URLResponse?, modelType: T.Type, completion: @escaping (Result<T?>) -> Void) {
         let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
         // Update this if your server update HttpResponse code in case of error
-//        printMessage("API Response :>", data.beautifyJSON())
+        printMessage("API Response :>", data.beautifyJSON())
 //        printMessage("API Response Status Code :> \(statusCode)")
 //        let jsonResponse = NSString(data: data, encoding: String.Encoding.ascii.rawValue)
 //        debugPrint("JSON Response is ============= ", jsonResponse ?? "")

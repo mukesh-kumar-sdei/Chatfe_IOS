@@ -10,6 +10,7 @@ import UIKit
 class AddFriendButtonTVC: UITableViewCell {
 
     @IBOutlet weak var imgAddFriend: UIImageView!
+    @IBOutlet weak var lblAddFriend: UILabel!
     @IBOutlet weak var btnAddFriend: UIButton!
     
     override func awakeFromNib() {

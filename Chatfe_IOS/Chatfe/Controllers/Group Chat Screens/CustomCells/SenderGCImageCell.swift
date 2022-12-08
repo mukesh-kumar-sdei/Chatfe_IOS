@@ -13,6 +13,7 @@ class SenderGCImageCell: UITableViewCell {
     @IBOutlet weak var lblChatMessage: UILabel!
     
     @IBOutlet weak var pictureView: EmojiReaction!
+    @IBOutlet weak var imgSentPhoto: UIImageView!
     @IBOutlet weak var sentImageButton: UIButton!
     
     @IBOutlet weak var viewEmoji: UIView!
@@ -56,10 +57,8 @@ class SenderGCImageCell: UITableViewCell {
     }
     
     func showImage(strImage: String) {
-        DispatchQueue.main.async {
-            if let sentImageURL = URL(string: strImage) {
-                self.sentImageButton.kf.setImage(with: sentImageURL, for: .normal)
-            }
+        if let sentImageURL = URL(string: strImage) {
+            self.sentImageButton.kf.setImage(with: sentImageURL, for: .normal)
         }
     }
     

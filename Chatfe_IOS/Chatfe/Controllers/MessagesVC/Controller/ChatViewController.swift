@@ -62,6 +62,9 @@ class ChatViewController: BaseViewController {
         super.viewDidLoad()
 
 //        self.navigationController?.isNavigationBarHidden = false
+        if isFromRecentConnections {
+            txtEnterMessage.becomeFirstResponder()
+        }
         setupUI()
         onlineStatus()
         initTableView()
@@ -75,14 +78,18 @@ class ChatViewController: BaseViewController {
         
 //        hitOnlineStatusEvent()    /// NOT IN USE NOW
 //        startTimer()
-
+        handleKeyboardObservers()
+        
+        
+//        updateOnlineOffline()
+        NotificationCenter.default.addObserver(self, selector: #selector(listenOnlineOfflineUsers(_:)), name: Notification.Name.LISTEN_ONLINE_USERS, object: nil)
+    }
+    
+    func handleKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShown), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         IQKeyboardManager.shared().isEnableAutoToolbar = false
         IQKeyboardManager.shared().isEnabled = false
-        
-//        updateOnlineOffline()
-        NotificationCenter.default.addObserver(self, selector: #selector(listenOnlineOfflineUsers(_:)), name: Notification.Name.LISTEN_ONLINE_USERS, object: nil)
     }
     
     @objc func listenOnlineOfflineUsers(_ notification: Notification) {
@@ -371,7 +378,11 @@ class ChatViewController: BaseViewController {
 
     // MARK: - ==== IBACTIONs ====
     @IBAction func backButtonTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isFromRecentConnections {
+            self.navigationController?.popToRootViewController(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     @IBAction func titleButtonTapped(_ sender: UIButton) {
@@ -576,18 +587,9 @@ extension ChatViewController: UITextFieldDelegate {
     
     func executeTypingSocketEvent(isTyping: Bool) {
         SocketIOManager.shared.userTypingStatus(senderId: senderID, receiverId: receiverID, chatHeadID: chatID, isTyping: isTyping) { data in
-            /*guard let data = data?.first else { return }
-            do {
-                let respData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-                let model = try JSONDecoder().decode(UserTypingModel.self, from: respData)
-                NotificationCenter.default.post(name: Notification.Name.SOCKET_USER_TYPING, object: model.isTyping)
-            } catch let error {
-                debugPrint(error.localizedDescription)
-            }*/
+            // NOTHING TO DO
         }
     }
-    
-    
     
 }
 
@@ -625,7 +627,7 @@ extension ChatViewController {
     }
     
     func uploadImageAPI(image: UIImage, name: String, fileName: String) {
-        let imageData = image.jpegData(compressionQuality: 0.8)! as NSData
+        let imageData = image.jpegData(compressionQuality: 0.5)! as NSData
         let file = File(name: name, fileName: fileName, data: imageData as Data)
         viewModel.uploadProfilePic(files: [file])
     }
@@ -637,7 +639,15 @@ extension ChatViewController {
 extension ChatViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if picker.sourceType == .camera {
+            self.handleKeyboardObservers()
+        }
         if let tempImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            let name = UUID().uuidString
+            let fileName = "\(name).jpg"
+            self.uploadImageAPI(image: tempImage, name: name, fileName: fileName)
+            self.dismiss(animated: true, completion: nil)
+        } else if let tempImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             let name = UUID().uuidString
             let fileName = "\(name).jpg"
             self.uploadImageAPI(image: tempImage, name: name, fileName: fileName)
@@ -648,6 +658,9 @@ extension ChatViewController: UINavigationControllerDelegate, UIImagePickerContr
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        if picker.sourceType == .camera {
+            self.handleKeyboardObservers()
+        }
         dismiss(animated: true, completion: nil)
     }
     

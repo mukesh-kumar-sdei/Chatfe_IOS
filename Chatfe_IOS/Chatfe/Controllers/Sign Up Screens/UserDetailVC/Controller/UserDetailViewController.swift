@@ -12,7 +12,7 @@ class UserDetailViewController: BaseViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: CustomTextField!
     
     lazy var viewModel: UserDetailsVM = {
         let obj = UserDetailsVM(userService: UserService())
@@ -29,6 +29,7 @@ class UserDetailViewController: BaseViewController {
 //        self.hideKeyboardWhenTappedAround()
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        phoneNumberTextField.maxLength = 12
         setupClosure()
     }
     

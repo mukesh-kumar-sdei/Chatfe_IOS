@@ -59,6 +59,12 @@ class FriendsProfileVM: BaseViewModel {
         }
     }
     
+    var recentConnDetails: RecentConnectionDetailModel? {
+        didSet {
+            self.updateLoadingStatus?()
+        }
+    }
+    
     // MARK: - API METHODS
     func getFriendsProfile(userId: String) {
         self.isLoading = true
@@ -221,5 +227,58 @@ class FriendsProfileVM: BaseViewModel {
         }
     }
     
+    // -------------------------------------
+    func recentConnectionDetails(userID: String, recentUserID: String) {
+//        self.isLoading = true
+        userService.recentConnectionDetailsAPI(userID: userID, recentUserID: recentUserID) { (result) in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                switch result {
+                case .success(let data):
+                    if let model = data as? RecentConnectionDetailModel {
+                        if model.status == APIKeys.success {
+                            self.recentConnDetails = model
+                        } else {
+                            self.errorMessage = model.message
+                        }
+                    }
+                case .error(let message):
+                    self.errorMessage = message
+                case .customError(let errorModel):
+                    self.errorMessage = errorModel.message
+                }
+            }
+        }
+    }
+    
+    //MARK: - SOCKET EVENT METHODs
+    func createNewChatAPI(receiverID: String, message: String) {
+        self.isLoading = true
+        DispatchQueue.main.async {
+            self.isLoading = false
+            if SocketIOManager.shared.isSocketConnected() {
+                if let userID = UserDefaultUtility.shared.getUserId() {
+                    SocketIOManager.shared.createNewChat(senderId: userID, receiverId: receiverID) { data in
+                        if let resp = data?.first, let chatData = resp as? [String:Any] {
+                            if let chatID = chatData[APIKeys._id] as? String {
+                                self.sendTextMessageAPI(chatID: chatID, receiverID: receiverID, message: message, type: "message")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func sendTextMessageAPI(chatID: String, receiverID: String, message: String, type: String) {
+        let params = ["chatHeadId"  : chatID,
+                      "message"     : message,
+                      "messageType" : type, // "message",
+                      "senderId"    : UserDefaultUtility.shared.getUserId() ?? "",
+                      "receiverId"  : receiverID
+        ] as [String : Any]
+        
+        SocketIOManager.shared.sendMessage(params: params)
+    }
     
 }
