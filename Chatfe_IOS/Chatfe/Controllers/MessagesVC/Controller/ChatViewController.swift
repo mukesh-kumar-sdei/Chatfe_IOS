@@ -437,7 +437,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ChatImageCell.className, for: indexPath) as! ChatImageCell
                 cell.selectionStyle = .none
                 
-                cell.setupFriendImage(strImage: self.receiverImg)
+                cell.setupFriendImage(strImage: self.userImage)
                 cell.sentImage(strImage: messages.message ?? "")
                 cell.setupTime(strTime: messages.createdAt ?? "")
                 
@@ -626,10 +626,24 @@ extension ChatViewController {
         }
     }
     
-    func uploadImageAPI(image: UIImage, name: String, fileName: String) {
-        let imageData = image.jpegData(compressionQuality: 0.5)! as NSData
-        let file = File(name: name, fileName: fileName, data: imageData as Data)
-        viewModel.uploadProfilePic(files: [file])
+    func uploadImageAPI(image: UIImage, name: String, fileName: String, sourceType: UIImagePickerController.SourceType) {
+        var imageData = NSData()
+        DispatchQueue.main.async {
+            if sourceType == .camera {
+                if let myImage = image.resizeImageWidthInPixel(width: 1024) {
+                    if let  rotatedImage = myImage.rotateImage() {
+                        imageData = rotatedImage.jpegData(compressionQuality: 0.3)! as NSData
+                    }
+                }
+            } else {
+                if let myImage = image.resizeImageWidthInPixel(width: 1024) {
+                    imageData = myImage.jpegData(compressionQuality: 0.3)! as NSData
+                }
+            }
+//            let imageData = image.jpegData(compressionQuality: 0.3)! as NSData
+            let file = File(name: name, fileName: fileName, data: imageData as Data)
+            self.viewModel.uploadProfilePic(files: [file])
+        }
     }
     
 }
@@ -641,19 +655,33 @@ extension ChatViewController: UINavigationControllerDelegate, UIImagePickerContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if picker.sourceType == .camera {
             self.handleKeyboardObservers()
-        }
-        if let tempImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            let name = UUID().uuidString
-            let fileName = "\(name).jpg"
-            self.uploadImageAPI(image: tempImage, name: name, fileName: fileName)
-            self.dismiss(animated: true, completion: nil)
-        } else if let tempImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            let name = UUID().uuidString
-            let fileName = "\(name).jpg"
-            self.uploadImageAPI(image: tempImage, name: name, fileName: fileName)
-            self.dismiss(animated: true, completion: nil)
+            if let tempImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                let name = UUID().uuidString
+                let fileName = "\(name).jpg"
+                self.uploadImageAPI(image: tempImage, name: name, fileName: fileName, sourceType: .camera)
+                self.dismiss(animated: true, completion: nil)
+            } else if let tempImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                let name = UUID().uuidString
+                let fileName = "\(name).jpg"
+                self.uploadImageAPI(image: tempImage, name: name, fileName: fileName, sourceType: .camera)
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.showBaseAlert("Something went wrong, please try again.")
+            }
         } else {
-            self.showBaseAlert("Something went wrong, please try again.")
+            if let tempImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                let name = UUID().uuidString
+                let fileName = "\(name).jpg"
+                self.uploadImageAPI(image: tempImage, name: name, fileName: fileName, sourceType: .photoLibrary)
+                self.dismiss(animated: true, completion: nil)
+            } else if let tempImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                let name = UUID().uuidString
+                let fileName = "\(name).jpg"
+                self.uploadImageAPI(image: tempImage, name: name, fileName: fileName, sourceType: .photoLibrary)
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.showBaseAlert("Something went wrong, please try again.")
+            }
         }
     }
     

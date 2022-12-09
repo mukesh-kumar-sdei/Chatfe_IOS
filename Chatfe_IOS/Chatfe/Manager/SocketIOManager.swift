@@ -282,7 +282,7 @@ class SocketIOManager: NSObject {
     
     func unreadCount(completion: @escaping completionHandler) {
         socket.on(SocketKeys.unreadMsgCount) { data, ack in
-            printMessage("\n--> Message COUNT :> \(data)")
+//            printMessage("\n--> Message COUNT :> \(data)")
             completion(data)
         }
     }
@@ -375,7 +375,7 @@ class SocketIOManager: NSObject {
     
     func unreadGCCount(completion: @escaping completionHandler) {
         socket.on(SocketKeys.grpUnreadMsg) { data, ack in
-            printMessage("\n--> Message COUNT :> \(data)")
+//            printMessage("\n--> Message COUNT :> \(data)")
             completion(data)
         }
     }

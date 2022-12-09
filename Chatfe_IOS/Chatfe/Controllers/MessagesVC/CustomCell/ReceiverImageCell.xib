@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qmP-FU-bNP">
-                        <rect key="frame" x="20" y="0.0" width="25" height="25"/>
+                        <rect key="frame" x="20" y="8" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="4nh-yX-JGj"/>
                             <constraint firstAttribute="width" constant="25" id="h4J-bo-Z5b"/>
@@ -35,7 +35,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuS-yx-ETP">
-                        <rect key="frame" x="60" y="0.0" width="200" height="200"/>
+                        <rect key="frame" x="60" y="8" width="200" height="200"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Koc-ln-u67">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -64,7 +64,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqO-sH-fML" userLabel="lblTime">
-                        <rect key="frame" x="60" y="210" width="34" height="15"/>
+                        <rect key="frame" x="60" y="218" width="34" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="jqg-7z-pxB"/>
                         </constraints>
@@ -76,13 +76,12 @@
                 <color key="backgroundColor" name="AccentColor"/>
                 <constraints>
                     <constraint firstItem="RuS-yx-ETP" firstAttribute="leading" secondItem="qmP-FU-bNP" secondAttribute="trailing" constant="15" id="02C-ut-ThS"/>
-                    <constraint firstItem="qmP-FU-bNP" firstAttribute="top" secondItem="cnW-yp-s52" secondAttribute="top" id="20j-av-eIN"/>
+                    <constraint firstItem="qmP-FU-bNP" firstAttribute="top" secondItem="RuS-yx-ETP" secondAttribute="top" id="5T0-DI-gm4"/>
                     <constraint firstItem="qmP-FU-bNP" firstAttribute="leading" secondItem="cnW-yp-s52" secondAttribute="leading" constant="20" id="AZz-75-22j"/>
                     <constraint firstItem="GqO-sH-fML" firstAttribute="top" secondItem="RuS-yx-ETP" secondAttribute="bottom" constant="10" id="PBr-Go-xK8"/>
                     <constraint firstAttribute="bottom" secondItem="GqO-sH-fML" secondAttribute="bottom" constant="10" id="QtW-ci-cmS"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RuS-yx-ETP" secondAttribute="trailing" constant="100" id="atf-Ml-eNh"/>
-                    <constraint firstItem="RuS-yx-ETP" firstAttribute="top" secondItem="cnW-yp-s52" secondAttribute="top" id="juw-ku-wib"/>
-                    <constraint firstItem="qmP-FU-bNP" firstAttribute="top" secondItem="cnW-yp-s52" secondAttribute="top" id="red-dK-T1Y"/>
+                    <constraint firstItem="RuS-yx-ETP" firstAttribute="top" secondItem="cnW-yp-s52" secondAttribute="top" constant="8" id="juw-ku-wib"/>
                     <constraint firstItem="GqO-sH-fML" firstAttribute="leading" secondItem="RuS-yx-ETP" secondAttribute="leading" id="yGj-KH-3Uj"/>
                 </constraints>
             </tableViewCellContentView>
