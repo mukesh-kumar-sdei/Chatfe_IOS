@@ -351,7 +351,7 @@ class EventGroupChatVC: BaseViewController {
                 }
                 
                 printMessage("--> RECEIVE GROUP MESSAGE :> \(respData.beautifyJSON())")
-                self.txtEnterMessage.text = ""
+//                self.txtEnterMessage.text = ""
                 self.scrollToBottom(true)
             } catch let error {
                 debugPrint(error.localizedDescription)
@@ -403,6 +403,7 @@ class EventGroupChatVC: BaseViewController {
     }
     
     @IBAction func galleryButtonTapped(_ sender: UIButton) {
+        self.txtEnterMessage.resignFirstResponder()
         self.openGallery()
     }
     
@@ -413,8 +414,10 @@ class EventGroupChatVC: BaseViewController {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         if self.txtEnterMessage.text?.count ?? 0 > 0 {
             self.viewModel.sendTextMessageAPI(channelID: channelID, message: self.txtEnterMessage.text ?? "", messageId: "", type: "message", reaction: "")
+            self.txtEnterMessage.text = ""
         } else {
             print("SOMETHING WENT WRONG")
+            self.txtEnterMessage.text = ""
         }
     }
     
@@ -691,13 +694,15 @@ extension EventGroupChatVC {
         DispatchQueue.main.async {
             if sourceType == .camera {
                 if let myImage = image.resizeImageWidthInPixel(width: 1024) {
-                    if let  rotatedImage = myImage.rotateImage() {
+                    if let rotatedImage = myImage.rotateImage() {
                         imageData = rotatedImage.jpegData(compressionQuality: 0.3)! as NSData
                     }
                 }
             } else {
                 if let myImage = image.resizeImageWidthInPixel(width: 1024) {
-                    imageData = myImage.jpegData(compressionQuality: 0.3)! as NSData
+                    if let rotatedImage = myImage.rotateImage() {
+                        imageData = rotatedImage.jpegData(compressionQuality: 0.3)! as NSData
+                    }
                 }
             }
             let file = File(name: name, fileName: fileName, data: imageData as Data)

@@ -365,7 +365,7 @@ class ChatViewController: BaseViewController {
                 }
                 
                 printMessage("--> RECEIVE MESSAGE :> \(respData.beautifyJSON())")
-                self.txtEnterMessage.text = ""
+//                self.txtEnterMessage.text = ""
                 self.scrollToBottom(true)
             } catch let error {
                 debugPrint(error.localizedDescription)
@@ -397,6 +397,7 @@ class ChatViewController: BaseViewController {
     }
     
     @IBAction func addFileButtonTapped(_ sender: UIButton) {
+        self.txtEnterMessage.resignFirstResponder()
         self.openGallery()
     }
     
@@ -631,13 +632,15 @@ extension ChatViewController {
         DispatchQueue.main.async {
             if sourceType == .camera {
                 if let myImage = image.resizeImageWidthInPixel(width: 1024) {
-                    if let  rotatedImage = myImage.rotateImage() {
+                    if let rotatedImage = myImage.rotateImage() {
                         imageData = rotatedImage.jpegData(compressionQuality: 0.3)! as NSData
                     }
                 }
             } else {
                 if let myImage = image.resizeImageWidthInPixel(width: 1024) {
-                    imageData = myImage.jpegData(compressionQuality: 0.3)! as NSData
+                    if let rotatedImage = myImage.rotateImage() {
+                        imageData = rotatedImage.jpegData(compressionQuality: 0.3)! as NSData
+                    }
                 }
             }
 //            let imageData = image.jpegData(compressionQuality: 0.3)! as NSData
@@ -669,6 +672,7 @@ extension ChatViewController: UINavigationControllerDelegate, UIImagePickerContr
                 self.showBaseAlert("Something went wrong, please try again.")
             }
         } else {
+            
             if let tempImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 let name = UUID().uuidString
                 let fileName = "\(name).jpg"
